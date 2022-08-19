@@ -10,12 +10,12 @@ import {
   Button,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
   MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
+  MenuList,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -28,6 +28,9 @@ import {
   QuestionOutlineIcon,
 } from "@chakra-ui/icons";
 import Cartwidget from "../Cartwidget/Cartwidget";
+
+import { useColorMode } from "@chakra-ui/color-mode";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Links = [
   "Inicio",
@@ -47,7 +50,6 @@ const NavLink = ({ children }) => (
       bg: useColorModeValue("gray.50", "gray.500"),
     }}
     href={"#"}
-   
   >
     <Box />
     {children}
@@ -56,6 +58,9 @@ const NavLink = ({ children }) => (
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === "dark";
 
   return (
     <>
@@ -89,14 +94,16 @@ export default function Navbar() {
             <button>
               <BellIcon mr={6} w={5} h={5} />
             </button>
-            <Cartwidget/>
+            <Cartwidget />
             <Menu>
-              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}
+              <MenuButton
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
                 rounded={"full"}
                 variant={"link"}
                 cursor={"pointer"}
                 minW={0}
-                >
+              >
                 <Avatar
                   size={"sm"}
                   src={
@@ -150,6 +157,12 @@ export default function Navbar() {
                 <MenuItem>Cerrar sesión</MenuItem>
               </MenuList>
             </Menu>
+            <IconButton
+              ml={8}
+              icon={isDark ? <FaSun /> : <FaMoon />}
+              isRound="true"
+              onClick={toggleColorMode}
+            />
           </Flex>
         </Flex>
 
