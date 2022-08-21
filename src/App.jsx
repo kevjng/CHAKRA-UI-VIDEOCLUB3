@@ -4,8 +4,8 @@ import { Center } from "@chakra-ui/react";
 /* COMPONENTES */
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Navbar from "./components/Navbar/Navbar";
-import Counter from "./components/Counter/Counter";
 import Footer from "./Footer/Footer";
+import ItemCount from "./components/Counter/ItemCount";
 
 /* ESTILOS */
 import './App.css';
@@ -19,7 +19,7 @@ function App() {
           <ItemListContainer info="Hola te estoy pasando info desde app.js" />
         </Center>
         <Center>
-          <Counter/>
+          <ItemCount/>
         </Center>
         <Footer />
       </div>

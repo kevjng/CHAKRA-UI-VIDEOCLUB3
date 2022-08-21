@@ -1,0 +1,16 @@
+{
+    "routes": [
+      {
+        "label": "Home",
+        "to": "/"
+      },
+      {
+        "label": "Cart",
+        "to": "/cart"
+      },
+    {
+        "label": "Peliculas",
+        "to": "/peliculas"
+      }
+    ]
+}

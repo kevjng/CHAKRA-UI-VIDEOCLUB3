@@ -5,9 +5,9 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 
 /* ESTILOS CSS*/
 
-import "./Counter.css";
+import "./ItemCount.css";
 
-const Counter = () => {
+const ItemCount = () => {
   const [counter, setCounter] = useState(0);
 
   function Restar() {
@@ -19,16 +19,6 @@ const Counter = () => {
 
   return (
     <div className="Counter">
-      <span
-        style={{
-          color: "white",
-          backgroundColor: "#322222",
-          borderRadius: "15px",
-          padding: 16,
-        }}
-      >
-        Contador: {counter}
-      </span>
       <span onClick={() => setCounter(counter + 1)}>
         <IconButton
           ml={1}
@@ -37,6 +27,17 @@ const Counter = () => {
           size={"lg"}
           color="green"
         ></IconButton>
+      </span>
+
+      <span
+        style={{
+          color: "white",
+          backgroundColor: "#322222",
+          borderRadius: "15px",
+          padding: 16,
+        }}
+      >
+        {counter}
       </span>
 
       <span onClick={Restar}>
@@ -48,9 +49,11 @@ const Counter = () => {
           color="red"
         ></IconButton>
       </span>
-      <Button onClick={() => setCounter(0)}>Reiniciar</Button>
+      <div className="boton">
+        <Button onClick={() => setCounter(0)}>Agregar a Mi Lista</Button>
+      </div>
     </div>
   );
 };
 
-export default Counter;
+export default ItemCount;
