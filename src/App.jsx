@@ -1,11 +1,10 @@
 /* LIBRERIAS DEPENDENCIAS */
-import { Center } from "@chakra-ui/react";
+
 
 /* COMPONENTES */
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./Footer/Footer";
-import ItemCount from "./components/Counter/ItemCount";
+import Footer from "./components/Footer/Footer";
 
 /* ESTILOS */
 import './App.css';
@@ -15,12 +14,7 @@ function App() {
     <>
       <div className="gradiente">
         <Navbar />
-        <Center>
-          <ItemListContainer info="Hola te estoy pasando info desde app.js" />
-        </Center>
-        <Center>
-          <ItemCount/>
-        </Center>
+        <ItemListContainer info="loading" />
         <Footer />
       </div>
     </>
