@@ -1,19 +1,20 @@
-import { Flex } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import Item from "../Item/Item";
 
 const ItemList = ({ items }) => {
   return (
-    <Flex flexDirection={"row"} justifyContent={"center"} margin={10}>
-      {items.map((item, indx) => (
-        <Item
-          key={indx}
-          id={item.id}
-          title={item.title}
-          img={item.img}
-          price={item.price}
-        />
-      ))}
-    </Flex>
+    <Grid templateColumns="repeat(6, 1fr)" gap={4}>
+      
+        {items.map((item, indx) => (
+          <Item
+            key={indx}
+            id={item.id}
+            title={item.title}
+            price={item.price}
+            img={item.img}
+          />
+        ))}
+    </Grid>
   );
 };
 

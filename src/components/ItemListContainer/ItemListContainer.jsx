@@ -1,7 +1,7 @@
-import { Spinner } from "@chakra-ui/react";
+import { Center, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
-import { Container, Box } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 
 const ItemListContainer = (props) => {
   const [items, setItems] = useState({});
@@ -11,7 +11,7 @@ const ItemListContainer = (props) => {
       {
         id: 1,
         tipo: "SuperHeroes",
-        img: "./src/img/avangers.jpg",
+        img: "/img/avangers.jpg",
         title: "Avangers - Infinity War",
         cantidad: 1,
         price: "$500",
@@ -19,7 +19,7 @@ const ItemListContainer = (props) => {
       {
         id: 2,
         tipo: "Infantil",
-        img: "./src/img/croods.jpg",
+        img: "/img/croods.jpg",
         title: "Los Croods - Una nueva era",
         cantidad: 1,
         price: "$500",
@@ -27,7 +27,7 @@ const ItemListContainer = (props) => {
       {
         id: 3,
         tipo: "Infantil",
-        img: "./src/img/cruella.jpg",
+        img: "/img/cruella.jpg",
         title: "Cruella",
         cantidad: 1,
         price: "$700",
@@ -35,7 +35,7 @@ const ItemListContainer = (props) => {
       {
         id: 4,
         tipo: "Aventura",
-        img: "./src/img/jumanji.jpg",
+        img: "/img/jumanji.jpg",
         title: "Jumanji - Siguiente Nivel",
         cantidad: 1,
         price: "$800",
@@ -43,7 +43,7 @@ const ItemListContainer = (props) => {
       {
         id: 5,
         tipo: "Aventura",
-        img: "./src/img/jungle.jpg",
+        img: "/img/jungle.jpg",
         title: "Jungle Cruise",
         cantidad: 1,
         price: "$900",
@@ -51,7 +51,7 @@ const ItemListContainer = (props) => {
       {
         id: 6,
         tipo: "Infantil",
-        img: "./src/img/luca.jpg",
+        img: "/img/luca.jpg",
         title: "Luca",
         cantidad: 1,
         price: "$500",
@@ -59,7 +59,7 @@ const ItemListContainer = (props) => {
       {
         id: 7,
         tipo: "Suspenso",
-        img: "./src/img/no respires.jpg",
+        img: "/img/no-respires.jpg",
         title: "No Respires 2",
         cantidad: 1,
         price: "$1500",
@@ -67,7 +67,7 @@ const ItemListContainer = (props) => {
       {
         id: 8,
         tipo: "Dibujos Animados",
-        img: "./src/img/paw.jpg",
+        img: "/img/paw.jpg",
         title: "Paw Patrol - Jet to the Rescue",
         cantidad: 1,
         price: "$1000",
@@ -75,7 +75,7 @@ const ItemListContainer = (props) => {
       {
         id: 9,
         tipo: "Aventura",
-        img: "./src/img/space.jpg",
+        img: "/img/space.jpg",
         title: "Space Jam",
         cantidad: 1,
         price: "$2500",
@@ -83,7 +83,7 @@ const ItemListContainer = (props) => {
       {
         id: 10,
         tipo: "Dibujos Animados",
-        img: "./src/img/tom.jpg",
+        img: "/img/tom.jpg",
         title: "Tom and Jerry",
         cantidad: 1,
         price: "$999",
@@ -91,10 +91,18 @@ const ItemListContainer = (props) => {
       {
         id: 11,
         tipo: "Infatil",
-        img: "./src/img/vivo.jpg",
+        img: "/img/vivo.jpg",
         title: "Vivo!",
         cantidad: 1,
         price: "$500",
+      },
+      {
+        id: 12,
+        tipo: "Aventura",
+        img: "/img/spiderman3.jpg",
+        title: "Spiderman 3",
+        cantidad: 1,
+        price: "$1240",
       },
     ];
 
@@ -108,14 +116,16 @@ const ItemListContainer = (props) => {
   }, []);
 
   return (
-    <Container maxW="2xl" bg="blue.600" centerContent>
-      <Box padding="4" bg="blue.400" maxW="md">
-        {items.length ? (
-          <ItemList info={props} items={items} />
-        ) : (
-          <Spinner size="xl" />
-        )}
-      </Box>
+    <Container maxW="100%" bg="blackAlpha.500">
+      {items.length ? (
+        <ItemList info={props} items={items} />
+      ) : (
+        <Center>
+          <div>
+            <Spinner size="xl"/>
+          </div>
+        </Center>
+      )}
     </Container>
   );
 };
