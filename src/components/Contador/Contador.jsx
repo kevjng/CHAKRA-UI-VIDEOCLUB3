@@ -2,6 +2,8 @@
 import { Button, IconButton } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { StarIcon } from "@chakra-ui/icons";
+
 
 /* ESTILOS CSS*/
 
@@ -55,7 +57,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         ></IconButton>
       
 
-      <Button disabled={ contador < 1 } onClick={() => onAdd(contador)}>
+      <Button mt={2} leftIcon={<StarIcon />} disabled={ contador < 1 } onClick={() => onAdd(contador)}>
         Agregar a Mi Lista
       </Button>
     </div>

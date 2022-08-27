@@ -1,14 +1,13 @@
-import { Center, Spinner } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import { Container } from "@chakra-ui/react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemListContainer = (props) => {
-  const [items, setItems] = useState({});
-  const { categoryid } = useParams();
+const ItemDetailContainer = () => {
+  const { id } = useParams();
+  const [item, setItem] = useState({});
 
-  useEffect(() => {
+    useEffect(() => {
     let arrPeliculas = [
       {
         id: 1,
@@ -108,29 +107,21 @@ const ItemListContainer = (props) => {
       },
     ];
 
-    new Promise((resolve, reject) => {
-      
-      setTimeout(() => {
-        resolve(arrPeliculas);
-      }, 2000);
+    new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(arrPeliculas.find((element) => element.id == id));
+      }, 2000)
     }).then((data) => {
-      setItems(data);
-    });
-  }, [categoryid]);
+
+        setItem(data)
+    })
+  }, [id]);
 
   return (
-    <Container maxW="100%" bg="blackAlpha.500">
-      {items.length ? (
-        <ItemList info={props} items={items} />
-      ) : (
-        <Center>
-          <div>
-            <Spinner size="xl"/>
-          </div>
-        </Center>
-      )}
-    </Container>
+      <Center>
+          { Object.getOwnPropertyNames(item).length && <ItemDetail item={item} />}
+    </Center>
   );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;

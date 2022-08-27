@@ -1,5 +1,6 @@
 import React from "react";
 import Contador from "../Contador/Contador";
+import {Link} from "react-router-dom"
 
 import {
   Box,
@@ -59,22 +60,26 @@ import {
               },
             }}
           >
-            <Image
-              rounded={"lg"}
-              height={230}
-              width={282}
-              objectFit={"cover"}
-              src={img}
-            />
+            <Link to={`/item/${id}`}>
+              <Image
+                rounded={"lg"}
+                height={230}
+                width={282}
+                objectFit={"cover"}
+                src={img}
+              />
+            </Link>
           </Box>
           <Stack pt={8} align={"center"}>
-            <Text
-              color={"gray.500"}
+            <Divider />
+            <Heading
               fontSize={"sm"}
-              textTransform={"uppercase"}
+              fontFamily={"body"}
+              fontWeight={500}
+              align={"center"}
             >
-              {/* Pelicula {id} */}
-            </Text>
+              {id}
+            </Heading>
             <Divider />
             <Heading
               fontSize={"sm"}
