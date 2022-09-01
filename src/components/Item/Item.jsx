@@ -1,6 +1,6 @@
 import React from "react";
-import Contador from "../Contador/Contador";
-import {Link} from "react-router-dom"
+/* import Contador from "../Contador/Contador";*/
+import { Link } from "react-router-dom"
 
 import {
   Box,
@@ -11,95 +11,93 @@ import {
   Stack,
   Image,
   Divider,
+  WrapItem,
   } from "@chakra-ui/react";
 
   
-  export default function Item({ id, title, price, img }) {
+  export default function Item({ index, id, title, price, img, tipo }) {
     
-    const onAdd = (contador) => {
-      console.log(
-        "soy Agregar a Mi Lista y el valor del contador es:",
-        contador
-      );
-    };
+   
 
 
     return (
-      <Center my={10}>
-        <Box
-          role={"group"}
-          p={4}
-          maxW={"230px"}
-          w={"full"}
-          bg={useColorModeValue("gray.400", "gray.900")}
-          boxShadow={"dark-lg"}
-          rounded={"lg"}
-          pos={"relative"}
-          zIndex={0}
-        >
+      <WrapItem>
+        
+        <Center mt={"14"}>
           <Box
+            role={"group"}
+            p={4}
+            maxW={"230px"}
+            w={"full"}
+            bg={useColorModeValue("gray.400", "gray.900")}
+            boxShadow={"dark-lg"}
             rounded={"lg"}
-            mt={-10}
             pos={"relative"}
-            height={"200px"}
-            _after={{
-              transition: "all .3s ease",
-              content: '""',
-              w: "full",
-              h: "full",
-              pos: "absolute",
-              top: 5,
-              left: 0,
-              backgroundImage: `url(${img})`,
-              filter: "blur(10px)",
-              zIndex: -1,
-            }}
-            _groupHover={{
-              _after: {
-                filter: "blur(20px)",
-              },
-            }}
+            zIndex={0}
           >
-            <Link to={`/item/${id}`}>
-              <Image
-                rounded={"lg"}
-                height={230}
-                width={282}
-                objectFit={"cover"}
-                src={img}
-              />
-            </Link>
-          </Box>
-          <Stack pt={8} align={"center"}>
-            <Divider />
-            <Heading
-              fontSize={"sm"}
-              fontFamily={"body"}
-              fontWeight={500}
-              align={"center"}
+            <Box
+              rounded={"lg"}
+              mt={-10}
+              pos={"relative"}
+              height={"200px"}
+              _after={{
+                transition: "all .3s ease",
+                content: '""',
+                w: "full",
+                h: "full",
+                pos: "absolute",
+                top: 5,
+                left: 0,
+                backgroundImage: `url(${img})`,
+                filter: "blur(10px)",
+                zIndex: -1,
+              }}
+              _groupHover={{
+                _after: {
+                  filter: "blur(20px)",
+                },
+              }}
             >
-              {id}
-            </Heading>
-            <Divider />
-            <Heading
-              fontSize={"sm"}
-              fontFamily={"body"}
-              fontWeight={500}
-              align={"center"}
-            >
-              {title}
-            </Heading>
-            <Divider />
-            <Stack direction={"row"} align={"center"}>
-              <Text fontWeight={400} fontSize={"x1"}>
-                {price}
-              </Text>
+              <Link to={`/item-detail/${id}`}>
+                <Image
+                  rounded={"lg"}
+                  height={230}
+                  width={282}
+                  objectFit={"cover"}
+                  src={img}
+                />
+              </Link>
+            </Box>
+            <Stack pt={8} align={"center"}>
+              <Divider />
+              <Heading
+                fontSize={"sm"}
+                fontFamily={"body"}
+                fontWeight={500}
+                align={"center"}
+              >
+                {id}
+              </Heading>
+              <Divider />
+              <Heading
+                fontSize={"sm"}
+                fontFamily={"body"}
+                fontWeight={500}
+                align={"center"}
+              >
+                {title}
+              </Heading>
+              <Divider />
+              <Stack direction={"row"} align={"center"}>
+                <Text fontWeight={400} fontSize={"x1"}>
+                  {price}
+                </Text>
+              </Stack>
+            <Link to={`/item-detail/${id}`}> Más detalles </Link>
             </Stack>
-          </Stack>
-          <Box align={"center"} mt={"5px"}>
-            <Contador stock={5} initial={0} onAdd={onAdd} />
+            
           </Box>
-        </Box>
-      </Center>
+        </Center>
+      </WrapItem>
     );
   }

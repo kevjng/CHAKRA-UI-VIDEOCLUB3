@@ -1,11 +1,15 @@
-import { Heading } from "@chakra-ui/layout";
+//COMPONENTES
+import Cartwidget from "../Cartwidget/Cartwidget";
+import config from "./config.json"
 
+import { NavLink } from "react-router-dom";
+import { Heading } from "@chakra-ui/layout";
 import {
   Box,
   Flex,
   Avatar,
   HStack,
-  Link,
+  /* Link, */
   IconButton,
   Button,
   Menu,
@@ -14,7 +18,7 @@ import {
   MenuDivider,
   useDisclosure,
   useColorModeValue,
-  Stack,
+  /*   Stack, */
   MenuList,
 } from "@chakra-ui/react";
 import {
@@ -27,20 +31,13 @@ import {
   EditIcon,
   QuestionOutlineIcon,
 } from "@chakra-ui/icons";
-import Cartwidget from "../Cartwidget/Cartwidget";
 
 import { useColorMode } from "@chakra-ui/color-mode";
 import { FaSun, FaMoon } from "react-icons/fa";
 
-const Links = [
-  "Inicio",
-  "Series",
-  "Películas",
-  "Novedades populares",
-  "Explorar por idiomas",
-];
+/* const Links = ["Inicio", "Series", "Películas"];
 
-const NavLink = ({ children }) => (
+const NavLinks = ({ children }) => (
   <Link
     px={2}
     py={1}
@@ -54,7 +51,7 @@ const NavLink = ({ children }) => (
     <Box />
     {children}
   </Link>
-);
+); */
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -64,7 +61,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} >
+      <Box bg={useColorModeValue("gray.100", "gray.900")} px={15}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -75,16 +72,27 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Heading ml="8" size="md" fontWeight="bold" color="teal.400">
-              VideoClub 3.0
+              <NavLink to={"/"}>
+                <img src="./img/logo.png" alt="logo"></img>
+              </NavLink>
             </Heading>
             <HStack
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              {config.routes.map((ruta, index) => (
+                <NavLink key={index} to={ruta.to}>{ruta.label}</NavLink>
+              ))
+              }
+
+              
+              {/* <NavLink to={"/"}>Home</NavLink>
+              <NavLink to={"/peliculas"}>Peliculas</NavLink>
+              <NavLink to={"/series"}>Series</NavLink> */}
+              {/*  {Links.map((link) => (
+                <NavLinks key={link}>{link}</NavLinks>
+              ))} */}
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
@@ -168,11 +176,11 @@ export default function Navbar() {
 
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
+            {/*  <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLinks key={link}>{link}</NavLinks>
               ))}
-            </Stack>
+            </Stack> */}
           </Box>
         ) : null}
       </Box>

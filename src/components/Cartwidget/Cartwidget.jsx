@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { StarIcon, CheckCircleIcon } from "@chakra-ui/icons";
 import {
   Menu,
@@ -11,7 +12,7 @@ import {
 import { Button } from "@chakra-ui/react";
 
 const Cartwidget = () => {
-  return (  
+  return (
     <Menu>
       {({ isOpen }) => (
         <>
@@ -32,9 +33,11 @@ const Cartwidget = () => {
             <MenuItem>Pelicula favorita 3</MenuItem>
             <MenuItem>Pelicula favorita 4</MenuItem>
             <MenuDivider />
-            <MenuItem onClick={() => alert("Yendo a pagina de pago")}>
-              <CheckCircleIcon mr={2} w={6} h={6} color="green" />
-              Alquilar listado!
+            <MenuItem /* onClick={() => alert("Yendo a pagina de pago")} */>
+              <NavLink to={"/mi-lista"}>
+                <CheckCircleIcon mr={2} w={6} h={6} color="green" />
+                Alquilar Mi Lista
+              </NavLink>
             </MenuItem>
           </MenuList>
         </>

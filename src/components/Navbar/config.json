@@ -5,12 +5,12 @@
         "to": "/"
       },
       {
-        "label": "Cart",
-        "to": "/cart"
-      },
-    {
         "label": "Peliculas",
         "to": "/peliculas"
+      },
+    {
+        "label": "Series",
+        "to": "/series"
       }
     ]
 }

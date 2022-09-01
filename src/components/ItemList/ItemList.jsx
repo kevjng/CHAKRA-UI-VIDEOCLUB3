@@ -1,20 +1,21 @@
-import { Grid } from "@chakra-ui/react";
+import { Wrap } from "@chakra-ui/react";
 import Item from "../Item/Item";
 
 const ItemList = ({ items }) => {
   return (
-    <Grid templateColumns="repeat(6, 1fr)" gap={4}>
+    <Wrap spacing="20px" justify="center">
       
-        {items.map((item, indx) => (
-          <Item
-            key={indx}
-            id={item.id}
-            title={item.title}
-            price={item.price}
-            img={item.img}
-          />
-        ))}
-    </Grid>
+      {items.map((item, index) => (
+        <Item
+          key={index}
+          id={item.id}
+          title={item.title}
+          price={item.price}
+          img={item.img}
+          tipo={item.tipo}
+        />
+      ))}
+    </Wrap>
   );
 };
 

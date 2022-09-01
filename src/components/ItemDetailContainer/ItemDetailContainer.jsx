@@ -1,4 +1,4 @@
-import { Center } from "@chakra-ui/react";
+import { Center, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
@@ -7,7 +7,7 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
 
-    useEffect(() => {
+  useEffect(() => {
     let arrPeliculas = [
       {
         id: 1,
@@ -16,6 +16,7 @@ const ItemDetailContainer = () => {
         title: "Avangers - Infinity War",
         cantidad: 1,
         price: "$500",
+        año: "1989",
       },
       {
         id: 2,
@@ -24,6 +25,7 @@ const ItemDetailContainer = () => {
         title: "Los Croods - Una nueva era",
         cantidad: 1,
         price: "$500",
+        año: "1990",
       },
       {
         id: 3,
@@ -32,6 +34,7 @@ const ItemDetailContainer = () => {
         title: "Cruella",
         cantidad: 1,
         price: "$700",
+        año: "1978",
       },
       {
         id: 4,
@@ -40,6 +43,7 @@ const ItemDetailContainer = () => {
         title: "Jumanji - Siguiente Nivel",
         cantidad: 1,
         price: "$800",
+        año: "1890",
       },
       {
         id: 5,
@@ -48,6 +52,7 @@ const ItemDetailContainer = () => {
         title: "Jungle Cruise",
         cantidad: 1,
         price: "$900",
+        año: "1607",
       },
       {
         id: 6,
@@ -56,6 +61,7 @@ const ItemDetailContainer = () => {
         title: "Luca",
         cantidad: 1,
         price: "$500",
+        año: "2001",
       },
       {
         id: 7,
@@ -64,6 +70,7 @@ const ItemDetailContainer = () => {
         title: "No Respires 2",
         cantidad: 1,
         price: "$1500",
+        año: "2002",
       },
       {
         id: 8,
@@ -72,6 +79,7 @@ const ItemDetailContainer = () => {
         title: "Paw Patrol - Jet to the Rescue",
         cantidad: 1,
         price: "$1000",
+        año: "2003",
       },
       {
         id: 9,
@@ -80,6 +88,7 @@ const ItemDetailContainer = () => {
         title: "Space Jam",
         cantidad: 1,
         price: "$2500",
+        año: "2004",
       },
       {
         id: 10,
@@ -87,7 +96,7 @@ const ItemDetailContainer = () => {
         img: "/img/tom.jpg",
         title: "Tom and Jerry",
         cantidad: 1,
-        price: "$999",
+        año: "2005",
       },
       {
         id: 11,
@@ -96,6 +105,7 @@ const ItemDetailContainer = () => {
         title: "Vivo!",
         cantidad: 1,
         price: "$500",
+        año: "2006",
       },
       {
         id: 12,
@@ -104,22 +114,22 @@ const ItemDetailContainer = () => {
         title: "Spiderman 3",
         cantidad: 1,
         price: "$1240",
+        año: "2007",
       },
     ];
 
     new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(arrPeliculas.find((element) => element.id == id));
-      }, 2000)
+      setTimeout(() => {
+        resolve(arrPeliculas.find((element) => element.id == id));
+      }, 2000);
     }).then((data) => {
-
-        setItem(data)
-    })
+      setItem(data);
+    });
   }, [id]);
 
   return (
-      <Center>
-          { Object.getOwnPropertyNames(item).length && <ItemDetail item={item} />}
+    <Center>
+      <ItemDetail item={item} />
     </Center>
   );
 };
