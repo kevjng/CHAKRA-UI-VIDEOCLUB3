@@ -73,7 +73,7 @@ export default function Navbar() {
           <HStack spacing={8} alignItems={"center"}>
             <Heading ml="8" size="md" fontWeight="bold" color="teal.400">
               <NavLink to={"/"}>
-                <img src="./img/logo.png" alt="logo"></img>
+                <img src="/img/logo.png" alt="logo"></img>
               </NavLink>
             </Heading>
             <HStack
