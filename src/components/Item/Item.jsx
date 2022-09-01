@@ -15,7 +15,7 @@ import {
   } from "@chakra-ui/react";
 
   
-  export default function Item({ index, id, title, price, img, tipo }) {
+  export default function Item({ index, id, title, price, img, tipo, genero }) {
     
    
 

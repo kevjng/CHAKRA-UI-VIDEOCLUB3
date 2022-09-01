@@ -30,14 +30,14 @@ function Header() {
               bgGradient="linear(to-r, cyan.400, blue.500, purple.600)"
               bgClip="text"
             >
-              VideoClub 3.0
+              VideoClub 3
             </Text>
             <Divider />
             <Text color={isDark ? "gray.200" : "gray.500"}>
               Evolucionamos, volvimos.
             </Text>
 
-            <Text fontSize="2xl" fontWeight={700} lineHeight={2}>
+            <Text fontSize="xl" fontWeight={700} lineHeight={10}>
               Una nueva forma de mirar contenido sin restricciones, donde estes,
               como estes y sin rebobinar tu peli o serie favorita 😍
             </Text>

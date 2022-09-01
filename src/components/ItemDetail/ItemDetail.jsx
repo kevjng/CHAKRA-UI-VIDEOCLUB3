@@ -20,7 +20,7 @@ import {
 import Contador from "../Contador/Contador";
 
 export default function ItemDetail({ item }) {
-  const { id, price, title, img, tipo, año } = item;
+  const { id, price, title, img, tipo, año, genero } = item;
   const params = useParams();
 
   console.log(params.id);
@@ -45,12 +45,12 @@ export default function ItemDetail({ item }) {
           <Flex>
             <Image
               rounded={"xl"}
-              alt={"product image"}
+              alt={title}
               src={img}
               fit={"cover"}
               align={"center"}
               w={"100%"}
-              h={{ base: "100%", sm: "400px", lg: "500px" }}
+              h={{ base: "100%", sm: "400px", lg: "640px" }}
             />
           </Flex>
           <Stack spacing={{ base: 6, md: 10 }}>
@@ -128,7 +128,7 @@ export default function ItemDetail({ item }) {
                   textTransform={"uppercase"}
                   mb={"4"}
                 >
-                  DETALLE DEL PRODUCTO
+                  DETALLE DE {tipo}
                 </Text>
 
                 <List spacing={2}>
@@ -136,7 +136,7 @@ export default function ItemDetail({ item }) {
                     <Text as={"span"} fontWeight={"bold"}>
                       Genero:
                     </Text>{" "}
-                    {tipo}
+                    {genero}
                   </ListItem>
                   <ListItem>
                     <Text as={"span"} fontWeight={"bold"}>
