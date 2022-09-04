@@ -5,6 +5,7 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import { StarIcon } from "@chakra-ui/icons";
 
 
+
 /* ESTILOS CSS*/
 
 import "./Contador.css";
@@ -17,7 +18,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
   };
 
   return (
-    <div style={{backgroundColor:"black", borderRadius:"5rem", display:"block", height:"55px", justifyContent:"center", alignContent:"center", alignItems:"center"}}>
+    <div style={{backgroundColor:"black", borderRadius:"1rem", display:"block", height:"55px", justifyContent:"center", alignContent:"center", alignItems:"center"}}>
       <span
         disabled={contador < initial}
         >
@@ -57,7 +58,8 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         ></IconButton>
       
 
-      <Button mt={2} ml={10} leftIcon={<StarIcon />} disabled={ contador < 1 } onClick={() => onAdd(contador)}>
+      <Button mt={2} ml={10} leftIcon={<StarIcon />} disabled={contador < 1} onClick={() => onAdd(contador)}>
+        
         Agregar a Mi Lista
       </Button>
     </div>

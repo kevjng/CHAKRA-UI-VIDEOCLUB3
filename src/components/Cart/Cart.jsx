@@ -1,18 +1,40 @@
 import React from 'react'
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
+
+import { CartContext } from '../../context/CartContex';
 
 const Cart = () => {
+
+  
+
   return (
-    <Box textAlign="center" py={10} px={6}>
-      <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
-      <Heading as="h2" size="xl" mt={6} mb={2}>
-        Esta es tu seleccion de Mi Lista
-      </Heading>
-      <Text color={"gray.500"}>
-        Todas las peliculas y series que hayas agregado a Mi Lista apareceran en esta seccion 👌
-      </Text>
-    </Box>
+    <>
+      
+      <Box textAlign="center" py={10} px={6}>
+        <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
+        <Heading as="h2" size="xl" mt={6} mb={2}>
+          Esta es tu seleccion de Mi Lista
+        </Heading>
+        <Text color={"gray.500"}>
+          Todas las peliculas y series que hayas agregado a Mi Lista apareceran
+          en esta seccion 👌
+        </Text>
+      </Box>
+
+     
+    </>
   );
 }
 

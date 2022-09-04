@@ -13,6 +13,7 @@ const ItemList = ({ items }) => {
           price={item.price}
           img={item.img}
           tipo={item.tipo}
+          stock={item.stock}
         />
       ))}
     </Wrap>

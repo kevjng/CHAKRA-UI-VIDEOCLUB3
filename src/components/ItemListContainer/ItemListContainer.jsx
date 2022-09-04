@@ -2,9 +2,15 @@ import { Box, Center, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import Header from "../Header/Header";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) => {
   const [items, setItems] = useState({});
+  const {id} = useParams();
+
+  console.log(id);
+
+  
 
   useEffect(() => {
     let arrPeliculas = [
@@ -16,6 +22,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$500",
         tipo: "serie",
+        stock: 1,
       },
       {
         id: 2,
@@ -25,6 +32,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$500",
         tipo: "pelicula",
+        stock: 2,
       },
       {
         id: 3,
@@ -34,6 +42,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$700",
         tipo: "serie",
+        stock: 3,
       },
       {
         id: 4,
@@ -43,6 +52,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$800",
         tipo: "pelicula",
+        stock: 4,
       },
       {
         id: 5,
@@ -52,6 +62,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$900",
         tipo: "serie",
+        stock: 5,
       },
       {
         id: 6,
@@ -61,6 +72,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$500",
         tipo: "pelicula",
+        stock: 6,
       },
       {
         id: 7,
@@ -70,6 +82,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$1500",
         tipo: "serie",
+        stock: 7,
       },
       {
         id: 8,
@@ -79,6 +92,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$1000",
         tipo: "pelicula",
+        stock: 8,
       },
       {
         id: 9,
@@ -88,6 +102,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$2500",
         tipo: "serie",
+        stock: 9,
       },
       {
         id: 10,
@@ -97,6 +112,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$999",
         tipo: "pelicula",
+        stock: 10,
       },
       {
         id: 11,
@@ -106,6 +122,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$500",
         tipo: "serie",
+        stock: 11,
       },
       {
         id: 12,
@@ -115,6 +132,7 @@ const ItemListContainer = (props) => {
         cantidad: 1,
         price: "$1240",
         tipo: "pelicula",
+        stock: 12,
       },
     ];
 
@@ -124,9 +142,17 @@ const ItemListContainer = (props) => {
         resolve(arrPeliculas);
       }, 2000);
     }).then((data) => {
-      setItems(data);
+      if (id) {
+        const tipoFiltrado = data.filter((item) =>
+          item.tipo === id
+        )
+        console.log("tipo filtrado", tipoFiltrado);
+        setItems (tipoFiltrado)
+      } else {
+        setItems(data);        
+      }
     });
-  }, []);
+  }, [id]);
 
   return (
     <>

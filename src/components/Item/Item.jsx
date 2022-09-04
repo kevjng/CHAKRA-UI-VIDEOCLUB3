@@ -15,14 +15,13 @@ import {
   } from "@chakra-ui/react";
 
   
-  export default function Item({ index, id, title, price, img, tipo, genero }) {
+  export default function Item({ index, id, title, price, img, tipo, genero, stock }) {
     
    
 
 
     return (
       <WrapItem>
-        
         <Center mt={"14"}>
           <Box
             role={"group"}
@@ -92,10 +91,12 @@ import {
                 <Text fontWeight={400} fontSize={"x1"}>
                   {price}
                 </Text>
+                <Text fontWeight={400} fontSize={"x1"}>
+                  stock: {stock}
+                </Text>
               </Stack>
-            <Link to={`/item-detail/${id}`}> Más detalles </Link>
+              <Link to={`/item-detail/${id}`}> Más detalles </Link>
             </Stack>
-            
           </Box>
         </Center>
       </WrapItem>

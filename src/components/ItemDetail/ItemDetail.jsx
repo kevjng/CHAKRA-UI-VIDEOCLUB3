@@ -1,6 +1,7 @@
-import { Box, Center } from "@chakra-ui/react";
-import React from "react";
-import { useParams } from "react-router-dom";
+import { Box, Button, Center } from "@chakra-ui/react";
+import {React, useContext, useState} from "react";
+import { Link, useParams } from "react-router-dom";
+import { CartContext } from "../../context/CartContex";
 
 import {
   Container,
@@ -17,18 +18,24 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
+//COMPONENTES
 import Contador from "../Contador/Contador";
 
 export default function ItemDetail({ item }) {
-  const { id, price, title, img, tipo, año, genero } = item;
+  const { id, price, title, img, tipo, año, genero, stock } = item;
+  const [counter, setCounter] = useState(0);
+  const { addItem } = useContext(CartContext)
+  
   const params = useParams();
 
-  console.log(params.id);
-
+  /*   console.log(params.id);*/
+  
   const onAdd = (contador) => {
+
+    setCounter(contador);  
     console.log(
       "soy Agregar a Mi Lista y el valor del contador es:",
-      contador,
+      contador, "el stock del producto es", stock,
       "del item-detail",
       params.id
     );
@@ -110,13 +117,9 @@ export default function ItemDetail({ item }) {
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                   <List spacing={2}>
                     <ListItem>ID:</ListItem>
-                    {/* <ListItem>Master Chronometer Certified</ListItem>{" "}
-                    <ListItem>Tachymeter</ListItem> */}
                   </List>
                   <List spacing={2}>
                     <ListItem>{id}</ListItem>
-                    {/* <ListItem>Chronometer</ListItem>
-                    <ListItem>Small seconds</ListItem> */}
                   </List>
                 </SimpleGrid>
               </Box>
@@ -144,54 +147,37 @@ export default function ItemDetail({ item }) {
                     </Text>{" "}
                     {año}
                   </ListItem>
-                  {/* <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Case:
-                    </Text>{" "}
-                    Steel
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Case diameter:
-                    </Text>{" "}
-                    42 mm
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Dial color:
-                    </Text>{" "}
-                    Black
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Crystal:
-                    </Text>{" "}
-                    Domed, scratch‑resistant sapphire crystal with
-                    anti‑reflective treatment inside
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Water resistance:
-                    </Text>{" "}
-                    5 bar (50 metres / 167 feet){" "}
-                  </ListItem> */}
                 </List>
               </Box>
             </Stack>
 
             <Box align={"center"} mt={"5px"}>
-              <Contador stock={5} initial={0} onAdd={onAdd} />
+              {counter !== 0 ? (
+                <Link to="/Cart">
+                  <div
+                    style={{
+                      backgroundColor: "red",
+                      borderRadius: "1rem",
+                      display: "block",
+                      height: "55px",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button>Finalizar compra</Button>
+                  </div>
+                </Link>
+              ) : (
+                <Contador stock={5} initial={0} onAdd={onAdd} />
+              )}
             </Box>
 
             <Stack
               direction="row"
               alignItems="center"
               justifyContent={"center"}
-            >
-              {/* <MdLocalShipping /> */}
-              {/*               <Text>2-3 dias habiles</Text>
-               */}{" "}
-            </Stack>
+            ></Stack>
           </Stack>
         </SimpleGrid>
       </Container>
