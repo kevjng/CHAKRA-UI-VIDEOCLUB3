@@ -3,7 +3,9 @@ import Cartwidget from "../Cartwidget/Cartwidget";
 import config from "./config.json"
 
 import { NavLink } from "react-router-dom";
-import { Heading } from "@chakra-ui/layout";
+
+import "./Navbar.css"
+import { Heading, Stack } from "@chakra-ui/layout";
 import {
   Box,
   Flex,
@@ -35,9 +37,9 @@ import {
 import { useColorMode } from "@chakra-ui/color-mode";
 import { FaSun, FaMoon } from "react-icons/fa";
 
-/* const Links = ["Inicio", "Series", "Películas"];
+/* const Links = ["Inicio", "Series", "Películas"]; */
 
-const NavLinks = ({ children }) => (
+/* const NavLinks = ({ children }) => (
   <Link
     px={2}
     py={1}
@@ -78,19 +80,19 @@ export default function Navbar() {
             </Heading>
             <HStack
               as={"nav"}
-              spacing={4}
+              spacing={10}
               display={{ base: "none", md: "flex" }}
             >
               {config.routes.map((ruta, index) => (
-                <NavLink key={index} to={ruta.to}>{ruta.label}</NavLink>
-              ))
-              }
+                <NavLink className="btn" key={index} to={ruta.to}>
+                  {ruta.label}
+                </NavLink>
+              ))}
 
-              
               {/* <NavLink to={"/"}>Home</NavLink>
               <NavLink to={"/peliculas"}>Peliculas</NavLink>
               <NavLink to={"/series"}>Series</NavLink> */}
-              {/*  {Links.map((link) => (
+              {/* {Links.map((link) => (
                 <NavLinks key={link}>{link}</NavLinks>
               ))} */}
             </HStack>
@@ -176,11 +178,13 @@ export default function Navbar() {
 
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
-            {/*  <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLinks key={link}>{link}</NavLinks>
+            <Stack as={"nav"} spacing={4}>
+              {config.routes.map((ruta, index) => (
+                <NavLink className="btn" key={index} to={ruta.to}>
+                  {ruta.label}
+                </NavLink>
               ))}
-            </Stack> */}
+            </Stack>
           </Box>
         ) : null}
       </Box>

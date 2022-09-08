@@ -1,8 +1,9 @@
-import { Box, Button, Center } from "@chakra-ui/react";
 import {React, useContext, useState} from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, /* useParams */ } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
 
+
+import { Box, Center } from "@chakra-ui/react";
 import {
   Container,
   Stack,
@@ -22,23 +23,28 @@ import {
 import Contador from "../Contador/Contador";
 
 export default function ItemDetail({ item }) {
-  const { id, price, title, img, tipo, año, genero, stock } = item;
-  const [counter, setCounter] = useState(0);
-  const { addItem } = useContext(CartContext)
+ /*  const params = useParams() */
   
-  const params = useParams();
+  const { id, price, title, img, tipo, año, genero, stock, /* desc */ } = item;
+  
+  const { addItem } = useContext(CartContext); //paso el metodo añadir, lo traigo del context
+  const [counter, setCounter] = useState(0);
+
 
   /*   console.log(params.id);*/
-  
-  const onAdd = (contador) => {
 
-    setCounter(contador);  
-    console.log(
+  const onAdd = (count) => {
+    setCounter(count);
+    addItem(item, count);
+
+    /* console.log(
       "soy Agregar a Mi Lista y el valor del contador es:",
-      contador, "el stock del producto es", stock,
+      count,
+      "el stock del producto es",
+      stock,
       "del item-detail",
       params.id
-    );
+    ); */
   };
 
   return (
@@ -97,10 +103,7 @@ export default function ItemDetail({ item }) {
                   diam nonumy eirmod tempor invidunt ut labore
                 </Text>
                 <Text fontSize={"lg"}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                  aliquid amet at delectus doloribus dolorum expedita hic, ipsum
-                  maxime modi nam officiis porro, quae, quisquam quos
-                  reprehenderit velit? Natus, totam.
+                  {item.desc}
                 </Text>
               </VStack>
               <Box>
@@ -116,10 +119,8 @@ export default function ItemDetail({ item }) {
 
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                   <List spacing={2}>
-                    <ListItem>ID:</ListItem>
-                  </List>
-                  <List spacing={2}>
-                    <ListItem>{id}</ListItem>
+                    <ListItem>ID:   
+                    {" "+ id}</ListItem>
                   </List>
                 </SimpleGrid>
               </Box>
@@ -131,7 +132,7 @@ export default function ItemDetail({ item }) {
                   textTransform={"uppercase"}
                   mb={"4"}
                 >
-                  DETALLE DE {tipo}
+                  DETALLE DE LA {tipo}
                 </Text>
 
                 <List spacing={2}>
@@ -147,6 +148,12 @@ export default function ItemDetail({ item }) {
                     </Text>{" "}
                     {año}
                   </ListItem>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Stock:
+                    </Text>{" "}
+                    {stock}
+                  </ListItem>
                 </List>
               </Box>
             </Stack>
@@ -156,20 +163,20 @@ export default function ItemDetail({ item }) {
                 <Link to="/Cart">
                   <div
                     style={{
-                      backgroundColor: "red",
+                      backgroundColor: "#0C847D",
                       borderRadius: "1rem",
-                      display: "block",
+                      display: "flex",
                       height: "55px",
                       justifyContent: "center",
                       alignContent: "center",
                       alignItems: "center",
                     }}
                   >
-                    <Button>Finalizar compra</Button>
+                    Finalizar compra
                   </div>
                 </Link>
               ) : (
-                <Contador stock={5} initial={0} onAdd={onAdd} />
+                  <Contador stock={item.stock} initial={1} onAdd={onAdd} />
               )}
             </Box>
 

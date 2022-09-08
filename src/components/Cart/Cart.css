@@ -1,0 +1,9 @@
+.cartContain{
+    padding: .5rem;
+}
+
+.cart{
+    font-size: 1.2em;
+    color: white;
+    font-family: "Fira Sans Extra Condensed", sans-serif;
+}

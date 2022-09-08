@@ -14,7 +14,9 @@ const ItemList = ({ items }) => {
           img={item.img}
           tipo={item.tipo}
           stock={item.stock}
-        />
+          año={item.año}
+          desc={item.desc}
+          />
       ))}
     </Wrap>
   );

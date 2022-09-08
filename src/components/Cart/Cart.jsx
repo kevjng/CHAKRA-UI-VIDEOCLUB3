@@ -1,23 +1,16 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContex";
+
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from "@chakra-ui/react";
 
-import { CartContext } from '../../context/CartContex';
+
+
 
 const Cart = () => {
 
-  
+  const { items, removeItem, clear } = useContext(CartContext);
 
   return (
     <>
@@ -33,6 +26,22 @@ const Cart = () => {
         </Text>
       </Box>
 
+       <h3>Carrito</h3>
+    {!items.lenght && <div>Tu carrito esta vacio</div> }
+    {items &&
+    <div className='cartContain'>
+        
+            {items.map((item, index) => <div className='cart' key={index}> Producto seleccionado: {item.title} - Cantidad: {item.quantity} - Total: {item.total}
+            <button className="btn" onClick={()=> removeItem(item.id)}>Eliminar Producto</button>
+            </div>)}
+       
+    </div>
+    }
+    <button className="btn" onClick={()=> clear(items)}>Vaciar Carrito</button>
+    <Link to='/'>
+    <button className="btn">Seguir Comprando</button>
+    </Link>
+    
      
     </>
   );

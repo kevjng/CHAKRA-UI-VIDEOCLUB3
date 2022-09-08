@@ -1,6 +1,7 @@
 import React from "react";
 /* import Contador from "../Contador/Contador";*/
 import { Link } from "react-router-dom"
+import itemCSS from "./ItemCSS.css"
 
 import {
   Box,
@@ -15,22 +16,22 @@ import {
   } from "@chakra-ui/react";
 
   
-  export default function Item({ index, id, title, price, img, tipo, genero, stock }) {
+  export default function Item({ index, id, title, price, img, tipo, genero, stock, año, desc }) {
     
    
 
 
     return (
       <WrapItem>
-        <Center mt={"14"}>
+        <Center my={"14"}>
           <Box
             role={"group"}
             p={4}
-            maxW={"230px"}
+            maxW={"300px"}
             w={"full"}
-            bg={useColorModeValue("gray.400", "gray.900")}
+            bg={useColorModeValue("gray.300", "gray.900")}
             boxShadow={"dark-lg"}
-            rounded={"lg"}
+            rounded={"xl"}
             pos={"relative"}
             zIndex={0}
           >
@@ -64,6 +65,9 @@ import {
                   width={282}
                   objectFit={"cover"}
                   src={img}
+                  borderRadius="3xl"
+                  objectPosition="0 -25px"
+                  size="1"
                 />
               </Link>
             </Box>
@@ -95,7 +99,10 @@ import {
                   stock: {stock}
                 </Text>
               </Stack>
-              <Link to={`/item-detail/${id}`}> Más detalles </Link>
+              <Link to={`/item-detail/${id}`} className="masdetalles">
+                {" "}
+                Más detalles{" "}
+              </Link>
             </Stack>
           </Box>
         </Center>
