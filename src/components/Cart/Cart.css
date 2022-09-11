@@ -1,9 +1,15 @@
 .cartContain{
+    display: flex;
     padding: .5rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .cart{
+    display: flex;
     font-size: 1.2em;
     color: white;
     font-family: "Fira Sans Extra Condensed", sans-serif;
+    align-items: center;
+    justify-content: center;
 }

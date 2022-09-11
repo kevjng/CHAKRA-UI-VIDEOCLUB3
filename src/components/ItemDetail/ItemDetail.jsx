@@ -102,9 +102,7 @@ export default function ItemDetail({ item }) {
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                   diam nonumy eirmod tempor invidunt ut labore
                 </Text>
-                <Text fontSize={"lg"}>
-                  {item.desc}
-                </Text>
+                <Text fontSize={"lg"}>{item.desc}</Text>
               </VStack>
               <Box>
                 <Text
@@ -119,8 +117,10 @@ export default function ItemDetail({ item }) {
 
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                   <List spacing={2}>
-                    <ListItem>ID:   
-                    {" "+ id}</ListItem>
+                    <ListItem>
+                      ID:
+                      {" " + id}
+                    </ListItem>
                   </List>
                 </SimpleGrid>
               </Box>
@@ -160,23 +160,41 @@ export default function ItemDetail({ item }) {
 
             <Box align={"center"} mt={"5px"}>
               {counter !== 0 ? (
-                <Link to="/Cart">
-                  <div
-                    style={{
-                      backgroundColor: "#0C847D",
-                      borderRadius: "1rem",
-                      display: "flex",
-                      height: "55px",
-                      justifyContent: "center",
-                      alignContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    Finalizar compra
-                  </div>
-                </Link>
+                <>
+                  <Link to="/">
+                    <div
+                      style={{
+                        backgroundColor: "#1D54B8",
+                        borderRadius: "1rem",
+                        display: "flex",
+                        height: "55px",
+                        justifyContent: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                        margin: "1rem 0rem"
+                        }}
+                    >
+                      Seguir comprando
+                    </div>
+                  </Link>
+                  <Link to="/Cart">
+                    <div
+                      style={{
+                        backgroundColor: "#0C847D",
+                        borderRadius: "1rem",
+                        display: "flex",
+                        height: "55px",
+                        justifyContent: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      Finalizar compra
+                    </div>
+                  </Link>
+                </>
               ) : (
-                  <Contador stock={item.stock} initial={1} onAdd={onAdd} />
+                <Contador stock={item.stock} initial={1} onAdd={onAdd} />
               )}
             </Box>
 

@@ -1,7 +1,6 @@
 import React from "react";
 /* import Contador from "../Contador/Contador";*/
 import { Link } from "react-router-dom"
-import itemCSS from "./ItemCSS.css"
 
 import {
   Box,
@@ -23,11 +22,11 @@ import {
 
     return (
       <WrapItem>
-        <Center my={"14"}>
+        <Center my={"10"}>
           <Box
             role={"group"}
             p={4}
-            maxW={"300px"}
+            maxW={"220px"}
             w={"full"}
             bg={useColorModeValue("gray.300", "gray.900")}
             boxShadow={"dark-lg"}
@@ -37,7 +36,7 @@ import {
           >
             <Box
               rounded={"lg"}
-              mt={-10}
+              mt={-8}
               pos={"relative"}
               height={"200px"}
               _after={{
@@ -93,7 +92,7 @@ import {
               <Divider />
               <Stack direction={"row"} align={"center"}>
                 <Text fontWeight={400} fontSize={"x1"}>
-                  {price}
+                  ${price}
                 </Text>
                 <Text fontWeight={400} fontSize={"x1"}>
                   stock: {stock}

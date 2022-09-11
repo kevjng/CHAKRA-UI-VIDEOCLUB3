@@ -10,7 +10,7 @@ export function CartProvider({ children }) {
     console.log({ ...item, quantity });
 
     if (isInCart(item.id)) {
-      console.log("soy duplicado")
+      console.log("soy un item duplicado")
       let aux = items;
       console.log(aux);
       let itemIndex = aux.findIndex((element) => element.id === item.id); 
@@ -18,13 +18,13 @@ export function CartProvider({ children }) {
       aux[itemIndex].quantity += quantity; 
       setItems([...aux]); 
     } else {
+      console.log("soy un item nuevo")
       setItems([...items, { ...item, quantity }]);
     }
   }
 
   function removeItem(itemId) {
-    let itemEliminado = items.filter((producto) => producto.id !== itemId);
-    setItems(itemEliminado);
+    setItems(items.filter((element)=> element.id !== itemId));
   }
 
   function clear() {
@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
   }
 
   function isInCart(itemId) {
-    return items.find((e) => e.id === itemId);
+    return items.find((element) => element.id === itemId);
   }
 
   return (
