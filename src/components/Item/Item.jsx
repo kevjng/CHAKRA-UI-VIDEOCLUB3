@@ -1,6 +1,7 @@
 import React from "react";
 /* import Contador from "../Contador/Contador";*/
 import { Link } from "react-router-dom"
+import "./ItemCSS.css";
 
 import {
   Box,

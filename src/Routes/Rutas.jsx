@@ -10,6 +10,9 @@ import Navbar from "../components/Navbar/Navbar";
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import Cart from "../components/Cart/Cart";
 import ItemDetailContainer from "../components/ItemDetailContainer/ItemDetailContainer";
+import Peliculas from "../components/Peliculas/Peliculas"
+import Series from "../components/Series/Series"
+import Checkout from "../components/Checkout/Checkout";
 
 const Rutas = () => {
   return (
@@ -21,6 +24,9 @@ const Rutas = () => {
         <Route path="/item-detail/:id" element={<ItemDetailContainer />} />
         <Route path="/categorias/:id" element={<ItemListContainer />} />
         <Route path="/Cart" element={<Cart />} />
+        <Route path="/categorias/peliculas" element={<Peliculas />} />
+        <Route path="/categorias/series" element={<Series />} />
+        <Route path="/checkout" element={<Checkout/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import Header from "../Header/Header";
 import { useParams } from "react-router-dom";
+import db from "../../services"
+import { collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = (props) => {
   const [items, setItems] = useState({});
@@ -12,7 +14,7 @@ const ItemListContainer = (props) => {
 
   
 
-  useEffect(() => {
+ /*  useEffect(() => {
      let arrPeliculas = [
        {
          id: 1,
@@ -158,9 +160,32 @@ const ItemListContainer = (props) => {
          año: 2012,
          desc: "Peter Parker sufre una terrible transformación cuando su traje de Hombre Araña se vuelve negro y libera una personalidad oscura y vengativa.",
        },
-     ];
+     ]; */
+  
+  useEffect(() => {
+    const getColData = async () => {
+      
+      try {
+        const data = collection(db, "items");
+        const col = await getDocs(data);
+        const res = col.docs.map((doc) => doc = { id: doc.id, ...doc.data() })
+        setItems(res)
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
 
-    new Promise((resolve, reject) => {
+      }  
+
+    getColData();
+
+    return () => {
+      
+    }
+  }, [])
+  
+
+   /*  new Promise((resolve, reject) => {
       
       setTimeout(() => {
         resolve(arrPeliculas);
@@ -176,7 +201,7 @@ const ItemListContainer = (props) => {
         setItems(data);        
       }
     });
-  }, [id]);
+  }, [id]); */
 
   return (
     <>

@@ -80,7 +80,7 @@ export default function ItemDetail({ item }) {
                 fontWeight={300}
                 fontSize={"2xl"}
               >
-                {price}
+                ${price}
               </Text>
             </Box>
 
@@ -93,14 +93,14 @@ export default function ItemDetail({ item }) {
                 />
               }
             >
-              <VStack spacing={{ base: 4, sm: 6 }}>
+              <VStack alignItems={"baseline"} spacing={{ base: 4, sm: 6 }}>
                 <Text
-                  color={useColorModeValue("gray.500", "gray.400")}
-                  fontSize={"2xl"}
-                  fontWeight={"300"}
+                  color={useColorModeValue("gray.500", "gray.500")}
+                  fontSize={"md"}
+                  fontWeight={"400"}
                 >
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Tipo ➡️
+                  {item.tipo}
                 </Text>
                 <Text fontSize={"lg"}>{item.desc}</Text>
               </VStack>
@@ -171,8 +171,8 @@ export default function ItemDetail({ item }) {
                         justifyContent: "center",
                         alignContent: "center",
                         alignItems: "center",
-                        margin: "1rem 0rem"
-                        }}
+                        margin: "1rem 0rem",
+                      }}
                     >
                       Seguir comprando
                     </div>

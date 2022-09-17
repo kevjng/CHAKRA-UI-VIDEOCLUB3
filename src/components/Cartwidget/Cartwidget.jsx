@@ -20,7 +20,22 @@ const Cartwidget = () => {
         leftIcon={<StarIcon />}
       >
         Mi Lista
-        <Text background={"black"} color={"white"} mx={"0.5"} borderRadius={"full"} width={"4"}>{items.reduce((pv, cv) => pv + cv.quantity, 0)}</Text>
+        <Text
+          background={"black"}
+          color={"white"}
+          borderRadius={"full"}
+          width={"6"}
+          height={"6"}
+          position={"relative"}
+          bottom={"10px"}
+          borderColor={"white"}
+          borderWidth={1.5}
+          fontSize="small"
+          textAlign={"center"}
+          justifyContent={"center"}
+        >
+          {items.reduce((pv, cv) => pv + cv.quantity, 0)}
+        </Text>
       </Button>
     </NavLink>
   );

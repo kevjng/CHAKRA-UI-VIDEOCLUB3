@@ -95,6 +95,15 @@ const Cart = () => {
                   Total de la compra: $
                   {items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
                 </Heading>
+                {items.length ? (
+                  <Link to="/checkout">
+                    <Button colorScheme={"green"} size={"lg"}>
+                      Finalizar compra
+                    </Button>
+                  </Link>
+                ) : (
+                  <span>Carga tus productos para finalizar tu compra</span>
+                )}
               </Box>
               <Box py={10}>
                 <Button

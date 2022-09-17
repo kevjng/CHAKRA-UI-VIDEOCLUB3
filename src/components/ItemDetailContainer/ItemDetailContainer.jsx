@@ -2,12 +2,34 @@ import { Center } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import db from "../../services";
+import { collection, getDocs } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
 
   useEffect(() => {
+    const getColData = async () => {
+      try {
+        const data = collection(db, "items");
+        const col = await getDocs(data);
+        const res = col.docs.map((doc) => (doc = { id: doc.id, ...doc.data() }));
+        setItem(res.find((element) => element.id === id));
+        console.log(res.find((element) => element.id === id));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getColData();
+
+    return () => {
+      
+    };
+  }, [id]);
+
+  /* useEffect(() => {
     let arrPeliculas = [
       {
         id: 1,
@@ -162,7 +184,7 @@ const ItemDetailContainer = () => {
     }).then((data) => {
       setItem(data);
     });
-  }, [id]);
+  }, [id]); */
 
   return (
     <Center>

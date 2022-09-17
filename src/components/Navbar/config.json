@@ -6,11 +6,11 @@
       },
       {
         "label": "Peliculas",
-        "to": "/categorias/pelicula"
+        "to": "/categorias/peliculas"
       },
     {
         "label": "Series",
-        "to": "categorias/serie"
+        "to": "categorias/series"
       }
     ]
 }
