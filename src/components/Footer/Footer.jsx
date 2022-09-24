@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/layout";
 
-import { Flex, IconButton } from "@chakra-ui/react";
+import { Flex, IconButton, useColorModeValue } from "@chakra-ui/react";
 
 import { VStack, Spacer } from "@chakra-ui/layout";
 import { FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
@@ -8,7 +8,7 @@ import { FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
 export default function Footer() {
   return (
     <>
-      <VStack p={20} backgroundColor="#161923" mt={"14"}>
+      <VStack p={20} bg={useColorModeValue("gray.100", "gray.900")} mt={"14"}>
         <Flex w="100%">
           <Heading
             ml="1"

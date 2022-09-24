@@ -21,6 +21,7 @@ import {
 
 //COMPONENTES
 import Contador from "../Contador/Contador";
+import { StarIcon } from "@chakra-ui/icons";
 
 export default function ItemDetail({ item }) {
  /*  const params = useParams() */
@@ -174,7 +175,7 @@ export default function ItemDetail({ item }) {
                         margin: "1rem 0rem",
                       }}
                     >
-                      Seguir comprando
+                      ⬅️ Seguir comprando 😍
                     </div>
                   </Link>
                   <Link to="/Cart">
@@ -189,7 +190,8 @@ export default function ItemDetail({ item }) {
                         alignItems: "center",
                       }}
                     >
-                      Finalizar compra
+                      <StarIcon mr={1} />
+                      Ir a mi Lista
                     </div>
                   </Link>
                 </>

@@ -25,7 +25,7 @@ const Cart = () => {
     <Center>
       <Box textAlign="center" py={10} px={6}>
         <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
-        <Heading as="h2" size="xl" mt={6} mb={2}>
+        <Heading as="h2" size="xl" mt={6} mb={2} color={"white"}>
           Esta es tu seleccion de Mi Lista
         </Heading>
         <Text color={"gray.500"}>
@@ -70,7 +70,7 @@ const Cart = () => {
                       src={item.img}
                       mr={"10"}
                     />
-                    <Stack>
+                    <Stack color={"white"}>
                       <Text fontSize="2xl">{item.title}</Text>
                       <Text>Cantidad: {item.quantity}</Text>
                       <Text>Precio: ${item.price}</Text>
