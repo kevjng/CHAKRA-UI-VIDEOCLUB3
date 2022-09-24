@@ -4,3 +4,4 @@ export const validarTodoLLeno = (campos) => {
   // return invalid
   return campos.some((campo) => campo === "");
 };
+

@@ -49,7 +49,7 @@ const setFirebase = async (orden) => {
   try {
     const col = collection(db, "ordenes"); //genero nueva col en fire
     const generarOrden = await addDoc(col, orden); //addDoc agrega doc a firebase
-    console.log(generarOrden.id);
+    console.log("Su orden recibio el ID:", generarOrden.id);
     alert("Su orden se genero correctamente", generarOrden.id);
   } catch (error) {
     console.log(error);
@@ -67,15 +67,16 @@ const Checkout = ({ total, compra }) => {
       direccion: "",
     },
     total: total,
-    items: compra,
+    compra: items,
+   
   });
 
   const [error, setError] = useState({});
-  const { buyer: { nombre, email, telefono, direccion },} = formulario;
+  const { buyer: { nombre, email, telefono, direccion }, } = formulario;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (validarTodoLLeno([nombre, email, telefono, direccion], items)) {
+    if (validarTodoLLeno([nombre, email, telefono, direccion])) {
       Swal.fire({
         title: "Uhhh!",
         text: "Campos incompletos, por favor llenalos",
@@ -88,7 +89,7 @@ const Checkout = ({ total, compra }) => {
       text: "Su orden de compra se genero correctamente!",
       icon: "success",
     });
-    setFirebase({ datos: formulario });
+    setFirebase({ formulario });
     clear();
   };
 
@@ -104,7 +105,7 @@ const Checkout = ({ total, compra }) => {
     });
   };
 
-  /*   const data = {
+    /* const data = {
     buyer: {
       nombre: "",
       email: "",
@@ -113,8 +114,8 @@ const Checkout = ({ total, compra }) => {
     },
     total: 15000,
     items: [
-      {id:1, name:"gorra", price:300, desc:"gorra moderna 2022"},
-      {id:2, name:"reloj", price:500, desc:"Reloj moderno 2023"} 
+      {id:1, name:"gorra", price:300, desc:"prueba again 2022"},
+      {id:2, name:"reloj", price:500, desc:"prueba again 2023"} 
     
     ],
   } */
@@ -149,7 +150,7 @@ const Checkout = ({ total, compra }) => {
 
         <div className="border row d-flex px-2">
           <div className="col-12 col-lg-9">
-            <p className="fs-4 text-uppercase">total</p>
+            <p className="fs-4 text-uppercase">Total de Mi Lista</p>
           </div>
           <div className="col-12 col-lg-3">
             <p>${total}</p>

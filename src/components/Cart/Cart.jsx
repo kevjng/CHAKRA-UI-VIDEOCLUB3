@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
+import Checkout from "../Checkout/Checkout";
 
 import {
   Box,
@@ -18,9 +19,9 @@ import {
   SmallCloseIcon,
 } from "@chakra-ui/icons";
 
+
 const Cart = () => {
   const { items, removeItem, clear } = useContext(CartContext);
-
   return (
     <Center>
       <Box textAlign="center" py={10} px={6}>
@@ -51,6 +52,7 @@ const Cart = () => {
               </Link>
             </div>
           )}
+
           {items && (
             <>
               {items.map((item, index) => (
@@ -134,6 +136,12 @@ const Cart = () => {
             </>
           )}
         </Box>
+      </Box>
+      <Box>
+        <Checkout
+          total={items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
+          compra={items}
+        />
       </Box>
     </Center>
   );
