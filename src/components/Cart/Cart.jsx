@@ -14,16 +14,17 @@ import {
 } from "@chakra-ui/react";
 import {
   ArrowBackIcon,
+  ArrowRightIcon,
   CheckCircleIcon,
   DeleteIcon,
   SmallCloseIcon,
 } from "@chakra-ui/icons";
 
-
 const Cart = () => {
   const { items, removeItem, clear } = useContext(CartContext);
+
   return (
-    <Center>
+    <Center color={"white"}>
       <Box textAlign="center" py={10} px={6}>
         <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
         <Heading as="h2" size="xl" mt={6} mb={2} color={"white"}>
@@ -56,55 +57,66 @@ const Cart = () => {
           {items && (
             <>
               {items.map((item, index) => (
-                <>
-                  <Box
-                    key={index}
-                    width={"full"}
-                    my={"2"}
-                    display={"flex"}
-                    background={"blackAlpha.500"}
-                    borderRadius={"2xl"}
-                    textAlign={"start"}
-                  >
-                    <Image
-                      borderRadius="2xl"
-                      boxSize="150px"
-                      src={item.img}
-                      mr={"10"}
-                    />
-                    <Stack color={"white"}>
-                      <Text fontSize="2xl">{item.title}</Text>
-                      <Text>Cantidad: {item.quantity}</Text>
-                      <Text>Precio: ${item.price}</Text>
+                <Box
+                  key={index}
+                  width={"full"}
+                  my={"2"}
+                  display={"flex"}
+                  background={"blackAlpha.500"}
+                  borderRadius={"2xl"}
+                  textAlign={"start"}
+                >
+                  <Image
+                    borderRadius="2xl"
+                    boxSize="150px"
+                    src={item.img}
+                    mr={"10"}
+                  />
+                  <Stack color={"white"}>
+                    <Text fontSize="2xl">{item.title}</Text>
+                    <Text>Cantidad: {item.quantity}</Text>
+                    <Text>Precio: ${item.price}</Text>
 
-                      <Button
-                        as={Button}
-                        variant={"solid"}
-                        colorScheme={"red"}
-                        size={"sm"}
-                        width={"100px"}
-                        leftIcon={<DeleteIcon />}
-                        onClick={() => removeItem(item.id)}
-                      >
-                        Eliminar
-                      </Button>
-                    </Stack>
-                  </Box>
-                </>
+                    <Button
+                      as={Button}
+                      variant={"solid"}
+                      colorScheme={"red"}
+                      size={"sm"}
+                      width={"100px"}
+                      leftIcon={<DeleteIcon />}
+                      onClick={() =>
+                        removeItem(item.id) +
+                        console.log(
+                          `el id del producto eliminado es: ${item.id}`
+                        )
+                      }
+                    >
+                      Eliminar
+                    </Button>
+                  </Stack>
+                </Box>
               ))}
+
               <Box>
                 <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
                   Total de la compra: $
                   {items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
                 </Heading>
+
                 {items.length ? (
                   <Link to="/checkout">
-                    <Button colorScheme={"green"} size={"lg"}>
+                    <Button
+                      rightIcon={<ArrowRightIcon />}
+                      colorScheme={"green"}
+                      size={"lg"}
+                    >
                       Finalizar compra
                     </Button>
                   </Link>
                 ) : (
-                  <span>Carga tus productos para finalizar tu compra</span>
+                  <span>
+                    Carga tus pelis o series para que aparezcan en Mi Lista
+                  </span>
                 )}
               </Box>
               <Box py={10}>
@@ -114,6 +126,7 @@ const Cart = () => {
                   colorScheme={"orange"}
                   size={"sm"}
                   mr={4}
+                  my={4}
                   leftIcon={<SmallCloseIcon />}
                   onClick={() => clear(items)}
                 >
@@ -137,12 +150,23 @@ const Cart = () => {
           )}
         </Box>
       </Box>
-      <Box>
-        <Checkout
-          total={items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
-          compra={items}
-        />
-      </Box>
+
+      <Center width={""} display={""}>
+        <Box
+          width={"full"}
+          my={"2"}
+          display={"block"}
+          background={"blackAlpha.500"}
+          borderRadius={"2xl"}
+          textAlign={"center"}
+          w={"full"}
+        >
+          <Checkout
+            compra={items}
+            total={items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
+          />
+        </Box>
+      </Center>
     </Center>
   );
 };

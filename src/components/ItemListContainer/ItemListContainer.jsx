@@ -2,16 +2,14 @@ import { Box, Center, Spinner } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import Header from "../Header/Header";
-import { useParams } from "react-router-dom";
 import db from "../../services"
 import { collection, getDocs } from "firebase/firestore";
+/* import { useParams } from "react-router-dom";*/
 
 const ItemListContainer = (props) => {
   const [items, setItems] = useState({});
-  const {id} = useParams();
-
-  console.log(id);
-
+/*   const {id} = useParams();*/
+/*   console.log(id); */
   
 
  /*  useEffect(() => {
@@ -170,9 +168,9 @@ const ItemListContainer = (props) => {
         const col = await getDocs(data);
         const res = col.docs.map((doc) => doc = { id: doc.id, ...doc.data() })
         setItems(res)
-        console.log(res)
+        /* console.log(res) */
       } catch (error) {
-        console.log(error)
+        /* console.log(error) */
       }
 
       }  

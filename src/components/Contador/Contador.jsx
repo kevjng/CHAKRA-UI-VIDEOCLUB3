@@ -4,9 +4,10 @@ import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { StarIcon } from "@chakra-ui/icons";
 
-
 /* ESTILOS CSS*/
 import "./Contador.css";
+
+
 
 const Contador = ({ stock, initial = 0, onAdd }) => {
   const [counter, setCounter] = useState(1); 
@@ -15,8 +16,10 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
     if (counter < stock) setCounter(counter + 1)
   };
 
+
   return (
-    <div className="boton-gradiente"
+    <div
+      className="boton-gradiente"
       style={{
         borderRadius: "1rem",
         display: "flex",
@@ -25,7 +28,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         alignItems: "center",
       }}
     >
-        <span>Reproducciones:</span>
+      <span>Reproducciones:</span>
       <span disabled={counter < initial}>
         <IconButton
           onClick={() => {
@@ -49,8 +52,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
           alignItems: "center",
           justifyContent: "center",
         }}
-        >
-        
+      >
         {counter}
       </span>
 
@@ -62,13 +64,12 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         size={"md"}
         color="green"
       ></IconButton>
-
       <Button
         mt={0}
         ml={20}
         leftIcon={<StarIcon />}
         disabled={counter < 1}
-        onClick={() => onAdd(counter)}
+        onClick={(() => onAdd(counter))}
       >
         Agregar a Mi Lista
       </Button>

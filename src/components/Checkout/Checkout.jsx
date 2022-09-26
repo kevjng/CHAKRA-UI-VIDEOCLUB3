@@ -1,13 +1,16 @@
-/* import { Button, Input } from "@chakra-ui/react"; */
+
+import Swal from "sweetalert2";
 
 import React, { useContext, useState } from "react";
 import db from "../../services/index";
 import { addDoc, collection } from "firebase/firestore";
 import { validarTodoLLeno } from "../../helpers";
-import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
-import { Button } from "@chakra-ui/react";
+import { Box, Button, Center, FormControl, Heading } from "@chakra-ui/react";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+
+import "./Checkout.css";
 
 /* 
 import {
@@ -15,6 +18,7 @@ import {
   FormLabel,
   FormHelperText,
   FormErrorMessage,} from "@chakra-ui/react"; */
+
 
 const Input = ({
   className,
@@ -28,7 +32,9 @@ const Input = ({
   error,
 }) => {
   return (
-    <div className={className}>
+    <Center>
+      <Box textAlign="center" py={6} px={6}>
+    <FormControl className={className}>
       <input
         type={type}
         name={name}
@@ -39,9 +45,12 @@ const Input = ({
         placeholder={placeholder}
       />
       {error.nombre && (
-        <h6 className="text-danger my-2 text-uppercase">{error.nombre}</h6>
+        <h6 className="error">{error.nombre}</h6>
       )}
-    </div>
+      </FormControl>
+    </Box>
+    </Center>
+      
   );
 };
 
@@ -49,15 +58,18 @@ const setFirebase = async (orden) => {
   try {
     const col = collection(db, "ordenes"); //genero nueva col en fire
     const generarOrden = await addDoc(col, orden); //addDoc agrega doc a firebase
-    console.log("Su orden recibio el ID:", generarOrden.id);
-    alert("Su orden se genero correctamente", generarOrden.id);
+    console.log("La orden se recibio bajo el ID:", generarOrden.id);
+    console.log("La fecha de la compra es", new Date());
+    /* alert("Su orden se genero correctamente", generarOrden.id); */
+
   } catch (error) {
     console.log(error);
   }
 };
 
 const Checkout = ({ total, compra }) => {
-  const { clear, items } = useContext(CartContext);
+
+  const { items, clear, now } = useContext(CartContext);
 
   const [formulario, setFormulario] = useState({
     buyer: {
@@ -66,9 +78,9 @@ const Checkout = ({ total, compra }) => {
       telefono: "",
       direccion: "",
     },
+    compra: compra,
     total: total,
-    compra: items,
-   
+    fecha: now,
   });
 
   const [error, setError] = useState({});
@@ -85,12 +97,13 @@ const Checkout = ({ total, compra }) => {
       return;
     }
     Swal.fire({
-      title: "Genial!",
-      text: "Su orden de compra se genero correctamente!",
+      title: "Su orden se genero correctamente",
+      text: `Pronto nos pondremos en contacto al mail, ${email} 😉`,
       icon: "success",
     });
     setFirebase({ formulario });
     clear();
+   
   };
 
   const handleChange = (e) => {
@@ -131,37 +144,72 @@ const Checkout = ({ total, compra }) => {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="container border">
-        <h3 className="text-uppercase text-center my-4">Ingresa tus datos:</h3>
-        {Object.keys(formulario.buyer).map((key, index) => (
-          <Input
-            key={index}
-            className="mb-3"
-            type="text"
-            name={`${key}`}
-            value={key.value}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            inputClassName={`form-control ${error[key] && "is-invalid"}`}
-            placeholder={`${key}`}
-            error={error}
-          />
-        ))}
+      <Center
+        py={6}
+        px={6}
+        my={"2"}
+        display={"block"}
+        background={"blackAlpha.500"}
+        borderRadius={"2xl"}
+        textAlign={"center"}
+        alignContent={"center"}
+      >
+        <Box
+          textAlign="center"
+          py={6}
+          px={6}
+          border={"2px"}
+          borderRadius={"2xl"}
+          borderColor={"cyan"}
+        >
+          <form onSubmit={onSubmit} className="container border">
+            <h2>Ingresa tus datos:</h2>
+            {Object.keys(formulario.buyer).map((key, index) => (
+              <Input
+                key={index}
+                type="text"
+                name={`${key}`}
+                value={key.value}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                inputClassName={`form-control ${
+                  error[key] && "is-invalid"
+                } input`}
+                placeholder={`${key}`}
+                error={error}
+              />
+            ))}
 
-        <div className="border row d-flex px-2">
-          <div className="col-12 col-lg-9">
-            <p className="fs-4 text-uppercase">Total de Mi Lista</p>
-          </div>
-          <div className="col-12 col-lg-3">
-            <p>${total}</p>
-          </div>
-          <Button type="submit" onClick={() => setFormulario(formulario)}>
-            Finalizar Compra!
-          </Button>
-        </div>
-
-        <Link to="/">Volver a Inicio</Link>
-      </form>
+            <Box alignContent={"center"} alignSelf={"center"}>
+              <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
+                Total de la compra: $
+                {items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
+              </Heading>
+              
+              <Button
+                type="submit"
+                as={Button}
+                variant={"solid"}
+                colorScheme={"green"}
+                size={"md"}
+                onClick={() => setFormulario(formulario)}
+                my={5}
+              >
+                Confirmar Compra
+              </Button>
+            </Box>
+            <Button
+              leftIcon={<ArrowBackIcon />}
+              variant={"outline"}
+              size={"sm"}
+              colorScheme={"red"}
+              my={5}
+            >
+              <Link to="/Cart">Volver a Mi Lista</Link>
+            </Button>
+          </form>
+        </Box>
+      </Center>
     </>
   );
 };
