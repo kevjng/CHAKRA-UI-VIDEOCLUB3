@@ -39,11 +39,13 @@ export function CartProvider({ children }) {
     return items.find((element) => element.id === itemId);
   }
 
-  let now = new Date();
+   let now = new Date();
 
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, clear, now,}}>
+    <CartContext.Provider
+      value={{ items, addItem, removeItem, clear, now, }}
+    >
       {children}
     </CartContext.Provider>
   );

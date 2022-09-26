@@ -38,7 +38,7 @@ const Cart = () => {
         <Box py={10} px={4}>
           {!items.length && (
             <div>
-              <h1>Tu carrito esta vacio 😒</h1>
+              <h1>"Mi Lista" esta vacia 😒</h1>
               <Link to="/">
                 <Button
                   as={Button}
@@ -155,7 +155,7 @@ const Cart = () => {
         <Box
           width={"full"}
           my={"2"}
-          display={"block"}
+          display={"none"}
           background={"blackAlpha.500"}
           borderRadius={"2xl"}
           textAlign={"center"}

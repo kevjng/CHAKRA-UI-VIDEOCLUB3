@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import React, { useContext, useState } from "react";
 import db from "../../services/index";
 import { addDoc, collection } from "firebase/firestore";
-import { validarTodoLLeno } from "../../helpers";
+import { validarCampos } from "../../helpers";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
 import { Box, Button, Center, FormControl, Heading } from "@chakra-ui/react";
@@ -67,9 +67,15 @@ const setFirebase = async (orden) => {
   }
 };
 
-const Checkout = ({ total, compra }) => {
 
+const Checkout = ({ total, compra }) => {
+  console.log(compra);
+  console.log(total);
+  console.log(typeof(total));
+  
   const { items, clear, now } = useContext(CartContext);
+  
+  let suma = items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)
 
   const [formulario, setFormulario] = useState({
     buyer: {
@@ -78,17 +84,20 @@ const Checkout = ({ total, compra }) => {
       telefono: "",
       direccion: "",
     },
-    compra: compra,
-    total: total,
+    compra: [{items}],
+    total: suma,
     fecha: now,
   });
+  /* console.log(typeof (formulario.total));
+  console.log(typeof(items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0))); */
+  
 
   const [error, setError] = useState({});
   const { buyer: { nombre, email, telefono, direccion }, } = formulario;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (validarTodoLLeno([nombre, email, telefono, direccion])) {
+    if (validarCampos([nombre, email, telefono, direccion])) {
       Swal.fire({
         title: "Uhhh!",
         text: "Campos incompletos, por favor llenalos",
@@ -174,7 +183,7 @@ const Checkout = ({ total, compra }) => {
                 onBlur={handleBlur}
                 inputClassName={`form-control ${
                   error[key] && "is-invalid"
-                } input`}
+                }`}
                 placeholder={`${key}`}
                 error={error}
               />
@@ -183,9 +192,9 @@ const Checkout = ({ total, compra }) => {
             <Box alignContent={"center"} alignSelf={"center"}>
               <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
                 Total de la compra: $
-                {items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
+                {suma}
               </Heading>
-              
+
               <Button
                 type="submit"
                 as={Button}
