@@ -1,8 +1,16 @@
+*{
+
+}
+
 .btn{
+padding: 15px;
+font-family: 'Quicksand', sans-serif;
 
 }
 
 .btn:hover{
-color: aquamarine;
-
+color: cyan;
+opacity: 1;
+transition: ease 1s;
 }
+

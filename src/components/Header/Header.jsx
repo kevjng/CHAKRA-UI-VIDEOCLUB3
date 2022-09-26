@@ -19,6 +19,7 @@ function Header() {
           spacing="200px"
           p={isNotSmallerScreen ? "32" : "0"}
           alignSelf="flex-start"
+          color={"white"}
         >
           <Box mt={isNotSmallerScreen ? "0" : 16} align="flex-start">
             <Text fontSize="5xl" fontWeight="semibold">

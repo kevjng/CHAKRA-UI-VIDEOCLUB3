@@ -1,5 +1,5 @@
 /* LIBRERIAS DEPENDENCIAS */
-import { Button, IconButton } from "@chakra-ui/react";
+import { Button, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { StarIcon } from "@chakra-ui/icons";
@@ -65,11 +65,12 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         color="green"
       ></IconButton>
       <Button
+        color={useColorModeValue("gray.900", "white.900")}
         mt={0}
         ml={20}
         leftIcon={<StarIcon />}
         disabled={counter < 1}
-        onClick={(() => onAdd(counter))}
+        onClick={() => onAdd(counter)}
       >
         Agregar a Mi Lista
       </Button>

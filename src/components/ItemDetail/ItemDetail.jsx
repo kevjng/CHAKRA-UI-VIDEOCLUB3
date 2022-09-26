@@ -77,7 +77,7 @@ export default function ItemDetail({ item }) {
                 {title}
               </Heading>
               <Text
-                color={useColorModeValue("gray.900", "gray.400")}
+                color={useColorModeValue("gray.200", "gray.400")}
                 fontWeight={300}
                 fontSize={"2xl"}
               >
@@ -90,13 +90,13 @@ export default function ItemDetail({ item }) {
               direction={"column"}
               divider={
                 <StackDivider
-                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  borderColor={useColorModeValue("gray.300", "gray.500")}
                 />
               }
             >
               <VStack alignItems={"baseline"} spacing={{ base: 4, sm: 6 }}>
                 <Text
-                  color={useColorModeValue("gray.500", "gray.500")}
+                  color={useColorModeValue("gray.300", "gray.400")}
                   fontSize={"md"}
                   fontWeight={"400"}
                 >

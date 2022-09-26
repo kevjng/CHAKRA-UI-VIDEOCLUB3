@@ -187,7 +187,7 @@ const ItemDetailContainer = () => {
   }, [id]); */
 
   return (
-    <Center>
+    <Center color={"white"}>
       <ItemDetail item={item} />
     </Center>
   );

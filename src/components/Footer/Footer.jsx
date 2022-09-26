@@ -8,7 +8,11 @@ import { FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
 export default function Footer() {
   return (
     <>
-      <VStack p={20} bg={useColorModeValue("gray.100", "gray.900")} mt={"14"}>
+      <VStack
+        p={20}
+        bg={useColorModeValue("whiteAlpha.500", "gray.900")}
+        mt={"14"}
+      >
         <Flex w="100%">
           <Heading
             ml="1"

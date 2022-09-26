@@ -63,7 +63,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={15}>
+      <Box bg={useColorModeValue("whiteAlpha.500", "gray.900")} px={15}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -84,7 +84,11 @@ export default function Navbar() {
               display={{ base: "none", md: "flex" }}
             >
               {config.routes.map((ruta, index) => (
-                <NavLink className="btn" key={index} to={ruta.to}>
+                <NavLink
+                  className="btn"
+                  key={index}
+                  to={ruta.to}
+                  >
                   {ruta.label}
                 </NavLink>
               ))}

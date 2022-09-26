@@ -79,25 +79,25 @@ const Checkout = ({ total, compra }) => {
 
   const [formulario, setFormulario] = useState({
     buyer: {
-      nombre: "",
-      email: "",
-      telefono: "",
-      direccion: "",
+      Nombre: "",
+      Email: "",
+      Telefono: "",
+      Direccion: "",
     },
-    compra: [{items}],
-    total: suma,
-    fecha: now,
+    Compra: {items},
+    Total: suma,
+    Fecha: now,
   });
   /* console.log(typeof (formulario.total));
   console.log(typeof(items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0))); */
   
 
   const [error, setError] = useState({});
-  const { buyer: { nombre, email, telefono, direccion }, } = formulario;
+  const { buyer: { Nombre, Email, Telefono, Direccion }, } = formulario;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (validarCampos([nombre, email, telefono, direccion])) {
+    if (validarCampos([Nombre, Email, Telefono, Direccion])) {
       Swal.fire({
         title: "Uhhh!",
         text: "Campos incompletos, por favor llenalos",
@@ -106,8 +106,8 @@ const Checkout = ({ total, compra }) => {
       return;
     }
     Swal.fire({
-      title: "Su orden se genero correctamente",
-      text: `Pronto nos pondremos en contacto al mail, ${email} 😉`,
+      title: "Gracias por tu compra!",
+      text: `Pronto nos pondremos en contacto al mail, ${Email} 😉`,
       icon: "success",
     });
     setFirebase({ formulario });
@@ -157,11 +157,12 @@ const Checkout = ({ total, compra }) => {
         py={6}
         px={6}
         my={"2"}
-        display={"block"}
+        display={"flex"}
         background={"blackAlpha.500"}
         borderRadius={"2xl"}
         textAlign={"center"}
         alignContent={"center"}
+        color={"white"}
       >
         <Box
           textAlign="center"

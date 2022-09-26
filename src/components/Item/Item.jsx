@@ -29,7 +29,7 @@ import {
             p={4}
             maxW={"220px"}
             w={"full"}
-            bg={useColorModeValue("gray.300", "gray.900")}
+            bg={useColorModeValue("whiteAlpha.500", "gray.900")}
             boxShadow={"dark-lg"}
             rounded={"xl"}
             pos={"relative"}
