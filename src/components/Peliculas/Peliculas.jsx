@@ -11,120 +11,173 @@ import {
   IconButton,
   createIcon,
   useColorModeValue,
+  Center,
 } from "@chakra-ui/react";
 
+import db from "../../services";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import ItemList from "../ItemList/ItemList";
+import { Spinner } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+
 const Peliculas = () => {
+  const [items, setItems] = useState({});
+  
+  const {tipo} = useParams();
+  console.log(tipo);
+
+ 
+  useEffect(() => {
+    const getColData = async () => {
+      try {
+        const data = collection(db, "items");
+        const col = await getDocs(data);
+        const res = col.docs.map(
+          (doc) => (doc = { id: doc.id, ...doc.data() })
+        );
+        setItems(res.filter((item) => item.tipo === "pelicula"));
+      } catch (error) {
+        /* console.log(error) */
+      }
+    };
+
+    getColData();
+
+    return () => {};
+  }, []);
+
   return (
-    <Container maxW={"7xl"}>
-      <Stack
-        align={"center"}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 12, md: 20 }}
-        direction={{ base: "column", md: "row" }}
-      >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-          <Heading
-            lineHeight={1.1}
-            fontWeight={600}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
-          >
-            <Text
-              as={"span"}
-              position={"relative"}
-              color={"blue.100"}
-              fontWeight={600}
-              fontSize={"80"}
-            >
-              Peliculas,
-            </Text>
-            <br />
-            <Text as={"span"} color={"cyan.400"}>
-              donde quieras!
-            </Text>
-          </Heading>
-          <Text color={"gray.300"}>
-            En noviembre de 2018, se reveló que Into the Spider-Verse había
-            entrado en el desarrollo de una secuela. La secuela, que
-            continuará la historia de Morales y contará con un romance con Gwen
-            Stacy / Spider-Gwen será dirigida por Joaquim Dos Santos y
-            escrita por David Callaham. En abril de 2021, se anunció que Kemp Powers y Justin K. Thompson también dirigirían la película con Dos Santos. El estreno de la primera parte está programado para el 2 de junio de 2023.
-          </Text>
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: "column", sm: "row" }}
-          >
-            <Button
-              rounded={"full"}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              colorScheme={"cyan"}
-              bg={"cyan.400"}
-              _hover={{ bg: "cyan.800" }}
-            >
-              Suscríbete Ya!
-            </Button>
-            <Button
-              rounded={"full"}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
-            >
-              Ver como funciona
-            </Button>
-          </Stack>
-        </Stack>
-        <Flex
-          flex={1}
-          justify={"center"}
+    <>
+      <Container maxW={"7xl"}>
+        <Stack
           align={"center"}
-          position={"relative"}
-          w={"full"}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 12, md: 20 }}
+          direction={{ base: "column", md: "row" }}
         >
-          <Blob
-            w={"150%"}
-            h={"150%"}
-            position={"absolute"}
-            top={"-20%"}
-            left={0}
-            zIndex={-1}
-            color={useColorModeValue("red.50", "red.400")}
-          />
-          <Box
+          <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+            <Heading
+              lineHeight={1.1}
+              fontWeight={600}
+              fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+            >
+              <Text
+                as={"span"}
+                position={"relative"}
+                color={"blue.100"}
+                fontWeight={600}
+                fontSize={"80"}
+              >
+                Peliculas,
+              </Text>
+              <br />
+              <Text as={"span"} color={"cyan.400"}>
+                donde quieras!
+              </Text>
+            </Heading>
+            <Text color={"gray.300"}>
+              En noviembre de 2018, se reveló que Into the Spider-Verse había
+              entrado en el desarrollo de una secuela. La secuela, que
+              continuará la historia de Morales y contará con un romance con
+              Gwen Stacy / Spider-Gwen será dirigida por Joaquim Dos Santos y
+              escrita por David Callaham. En abril de 2021, se anunció que Kemp
+              Powers y Justin K. Thompson también dirigirían la película con Dos
+              Santos. El estreno de la primera parte está programado para el 2
+              de junio de 2023.
+            </Text>
+            <Stack
+              spacing={{ base: 4, sm: 6 }}
+              direction={{ base: "column", sm: "row" }}
+            >
+              <Button
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                colorScheme={"cyan"}
+                bg={"cyan.400"}
+                _hover={{ bg: "cyan.800" }}
+              >
+                Suscríbete Ya!
+              </Button>
+              <Button
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
+              >
+                Ver como funciona
+              </Button>
+            </Stack>
+          </Stack>
+          <Flex
+            flex={1}
+            justify={"center"}
+            align={"center"}
             position={"relative"}
-            height={"300px"}
-            rounded={"2xl"}
-            boxShadow={"2xl"}
-            width={"full"}
-            overflow={"hidden"}
+            w={"full"}
           >
-            <IconButton
-              aria-label={"Play Button"}
-              variant={"ghost"}
-              _hover={{ bg: "transparent" }}
-              icon={<PlayIcon w={14} h={14} />}
-              size={"lg"}
-              color={"white"}
+            <Blob
+              w={"150%"}
+              h={"150%"}
               position={"absolute"}
-              left={"50%"}
-              top={"50%"}
-              transform={"translateX(-50%) translateY(-50%)"}
+              top={"-20%"}
+              left={0}
+              zIndex={-1}
+              color={useColorModeValue("red.50", "red.400")}
             />
-            <Image
-              alt={"Hero Image"}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={"100%"}
-              src={
-                "https://de10.com.mx/sites/default/files/styles/detalle_nota_1080x666_v22/public/2021/12/15/sagas_spider_man.jpg?itok=MBWO7KSC"
-              }
+            <Box
+              position={"relative"}
+              height={"300px"}
+              rounded={"2xl"}
+              boxShadow={"2xl"}
+              width={"full"}
+              overflow={"hidden"}
+            >
+              <IconButton
+                aria-label={"Play Button"}
+                variant={"ghost"}
+                _hover={{ bg: "transparent" }}
+                icon={<PlayIcon w={14} h={14} />}
+                size={"lg"}
+                color={"white"}
+                position={"absolute"}
+                left={"50%"}
+                top={"50%"}
+                transform={"translateX(-50%) translateY(-50%)"}
+              />
+              <Image
+                alt={"Hero Image"}
+                fit={"cover"}
+                align={"center"}
+                w={"100%"}
+                h={"100%"}
+                src={
+                  "https://de10.com.mx/sites/default/files/styles/detalle_nota_1080x666_v22/public/2021/12/15/sagas_spider_man.jpg?itok=MBWO7KSC"
+                }
+              />
+            </Box>
+          </Flex>
+        </Stack>
+      </Container>
+
+      <Center mx={"40"} maxW="1500px" minW="250px">
+        {items.length ? (
+          <ItemList items={items} />
+        ) : (
+          <Center py={"5vh"} justify={"center"}>
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              color="blue.500"
+              size="xl"
             />
-          </Box>
-        </Flex>
-      </Stack>
-    </Container>
+          </Center>
+        )}
+      </Center>
+    </>
   );
 };
 

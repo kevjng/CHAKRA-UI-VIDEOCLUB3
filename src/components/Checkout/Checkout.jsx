@@ -1,11 +1,10 @@
-
 import Swal from "sweetalert2";
 
 import React, { useContext, useState } from "react";
 import db from "../../services/index";
 import { addDoc, collection } from "firebase/firestore";
 import { validarCampos } from "../../helpers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
 import { Box, Button, Center, FormControl, Heading } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
@@ -18,7 +17,6 @@ import {
   FormLabel,
   FormHelperText,
   FormErrorMessage,} from "@chakra-ui/react"; */
-
 
 const Input = ({
   className,
@@ -34,23 +32,20 @@ const Input = ({
   return (
     <Center>
       <Box textAlign="center" py={6} px={6}>
-    <FormControl className={className}>
-      <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        onBlur={(e) => onBlur(e)}
-        className={inputClassName}
-        placeholder={placeholder}
-      />
-      {error.nombre && (
-        <h6 className="error">{error.nombre}</h6>
-      )}
-      </FormControl>
-    </Box>
+        <FormControl className={className}>
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            onBlur={(e) => onBlur(e)}
+            className={inputClassName}
+            placeholder={placeholder}
+          />
+          {error.nombre && <h6 className="error">{error.nombre}</h6>}
+        </FormControl>
+      </Box>
     </Center>
-      
   );
 };
 
@@ -61,21 +56,21 @@ const setFirebase = async (orden) => {
     console.log("La orden se recibio bajo el ID:", generarOrden.id);
     console.log("La fecha de la compra es", new Date());
     /* alert("Su orden se genero correctamente", generarOrden.id); */
-
   } catch (error) {
     console.log(error);
   }
 };
 
-
 const Checkout = ({ total, compra }) => {
-  console.log(compra);
+  /* console.log(compra);
   console.log(total);
-  console.log(typeof(total));
-  
-  const { items, clear, now } = useContext(CartContext);
-  
-  let suma = items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)
+  console.log(typeof total); */
+
+  const navigate = useNavigate();
+
+  const { items, clear } = useContext(CartContext);
+
+  let suma = items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0);
 
   const [formulario, setFormulario] = useState({
     buyer: {
@@ -84,18 +79,19 @@ const Checkout = ({ total, compra }) => {
       Telefono: "",
       Direccion: "",
     },
-    Compra: {items},
-    Total: suma,
-    Fecha: now,
+    compra: [{ items }],
+    total: suma,
+    Fecha: new Date(),
   });
   /* console.log(typeof (formulario.total));
   console.log(typeof(items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0))); */
-  
 
   const [error, setError] = useState({});
-  const { buyer: { Nombre, Email, Telefono, Direccion }, } = formulario;
+  const {
+    buyer: { Nombre, Email, Telefono, Direccion },
+  } = formulario;
 
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     if (validarCampos([Nombre, Email, Telefono, Direccion])) {
       Swal.fire({
@@ -112,9 +108,9 @@ const Checkout = ({ total, compra }) => {
     });
     setFirebase({ formulario });
     clear();
-   
-  };
 
+   setTimeout(() => navigate("/"), 4000);
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -127,7 +123,7 @@ const Checkout = ({ total, compra }) => {
     });
   };
 
-    /* const data = {
+  /* const data = {
     buyer: {
       nombre: "",
       email: "",
@@ -182,9 +178,7 @@ const Checkout = ({ total, compra }) => {
                 value={key.value}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                inputClassName={`form-control ${
-                  error[key] && "is-invalid"
-                }`}
+                inputClassName={`form-control ${error[key] && "is-invalid"}`}
                 placeholder={`${key}`}
                 error={error}
               />
@@ -192,8 +186,7 @@ const Checkout = ({ total, compra }) => {
 
             <Box alignContent={"center"} alignSelf={"center"}>
               <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
-                Total de la compra: $
-                {suma}
+                Total de la compra: ${suma}
               </Heading>
 
               <Button

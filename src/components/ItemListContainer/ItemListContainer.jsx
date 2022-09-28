@@ -6,7 +6,7 @@ import db from "../../services"
 import { collection, getDocs } from "firebase/firestore";
 /* import { useParams } from "react-router-dom";*/
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
   const [items, setItems] = useState({});
 /*   const {id} = useParams();*/
 /*   console.log(id); */
@@ -217,7 +217,7 @@ const ItemListContainer = (props) => {
       </Center>
       <Center mx={"40"} maxW="1500px" minW="250px">
         {items.length ? (
-          <ItemList info={props} items={items} />
+          <ItemList items={items} />
         ) : (
           <Center py={"5vh"}>
             <Spinner
