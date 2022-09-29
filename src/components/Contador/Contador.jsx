@@ -67,7 +67,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
       <Button
         color={useColorModeValue("gray.900", "white.900")}
         mt={0}
-        ml={20}
+        mx={5}
         leftIcon={<StarIcon />}
         disabled={counter < 1}
         onClick={() => onAdd(counter)}

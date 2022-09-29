@@ -26,10 +26,10 @@ import {
 import {
   HamburgerIcon,
   CloseIcon,
-  Search2Icon,
-  ChevronDownIcon,
-  BellIcon,
-  SettingsIcon,
+/*   Search2Icon,
+ */  ChevronDownIcon,
+/*   BellIcon,
+ */  SettingsIcon,
   EditIcon,
   QuestionOutlineIcon,
 } from "@chakra-ui/icons";
@@ -103,10 +103,10 @@ export default function Navbar() {
           </HStack>
           <Flex alignItems={"center"}>
             <button>
-              <Search2Icon mr={6} w={4} />
+              {/* <Search2Icon mr={6} w={4} /> */}
             </button>
             <button>
-              <BellIcon mr={6} w={5} h={5} />
+              {/* <BellIcon mr={6} w={5} h={5} /> */}
             </button>
             <Cartwidget />
             <Menu>

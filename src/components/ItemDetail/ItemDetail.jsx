@@ -26,7 +26,7 @@ import { StarIcon } from "@chakra-ui/icons";
 export default function ItemDetail({ item }) {
  /*  const params = useParams() */
   
-  const { id, price, title, img, tipo, año, genero, stock, /* desc */ } = item;
+  const { id, price, title, img, img1, tipo, año, genero, stock, /* desc */ } = item;
   
   const { addItem } = useContext(CartContext); //paso el metodo añadir, lo traigo del context
   const [counter, setCounter] = useState(0);
@@ -60,7 +60,7 @@ export default function ItemDetail({ item }) {
             <Image
               rounded={"xl"}
               alt={title}
-              src={img}
+              src={img1}
               fit={"cover"}
               align={"center"}
               w={"100%"}
