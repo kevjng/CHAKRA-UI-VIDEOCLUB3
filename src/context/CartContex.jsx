@@ -39,12 +39,14 @@ export function CartProvider({ children }) {
     return items.find((element) => element.id === itemId);
   }
 
+  let suma = items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0);
+
  
 
 
   return (
     <CartContext.Provider
-      value={{ items, addItem, removeItem, clear, }}
+      value={{ items, addItem, removeItem, clear, suma}}
     >
       {children}
     </CartContext.Provider>

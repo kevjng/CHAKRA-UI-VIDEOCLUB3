@@ -21,7 +21,7 @@ import {
 } from "@chakra-ui/icons";
 
 const Cart = () => {
-  const { items, removeItem, clear } = useContext(CartContext);
+  const { items, removeItem, clear, suma } = useContext(CartContext);
 
   return (
     <Center color={"white"}>
@@ -163,7 +163,7 @@ const Cart = () => {
         >
           <Checkout
             compra={items}
-            total={items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0)}
+            total={suma}
           />
         </Box>
       </Center>

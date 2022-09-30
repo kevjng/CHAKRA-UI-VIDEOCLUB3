@@ -3,6 +3,7 @@ import { Button, IconButton, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { StarIcon } from "@chakra-ui/icons";
+import { useToast } from "@chakra-ui/react";
 
 /* ESTILOS CSS*/
 import "./Contador.css";
@@ -70,7 +71,10 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         mx={5}
         leftIcon={<StarIcon />}
         disabled={counter < 1}
-        onClick={() => onAdd(counter)}
+        onClick={() => {
+          onAdd(counter);
+         /*  useToast(); */
+        }}
       >
         Agregar a Mi Lista
       </Button>

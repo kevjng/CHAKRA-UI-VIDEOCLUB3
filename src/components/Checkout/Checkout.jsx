@@ -6,17 +6,20 @@ import { addDoc, collection } from "firebase/firestore";
 import { validarCampos } from "../../helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
-import { Box, Button, Center, FormControl, Heading } from "@chakra-ui/react";
+import { Box, Button, Center, FormControl, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
-import "./Checkout.css";
-
-/* 
 import {
-  FormControl,
-  FormLabel,
-  FormHelperText,
-  FormErrorMessage,} from "@chakra-ui/react"; */
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+
+import "./Checkout.css";
 
 const Input = ({
   className,
@@ -49,28 +52,35 @@ const Input = ({
   );
 };
 
-const setFirebase = async (orden) => {
-  try {
-    const col = collection(db, "ordenes"); //genero nueva col en fire
-    const generarOrden = await addDoc(col, orden); //addDoc agrega doc a firebase
-    console.log("La orden se recibio bajo el ID:", generarOrden.id);
-    console.log("La fecha de la compra es", new Date());
-    /* alert("Su orden se genero correctamente", generarOrden.id); */
-  } catch (error) {
-    console.log(error);
-  }
-};
+
+
 
 const Checkout = ({ total, compra }) => {
+  const [idCompra, setIdCompra] = useState("");
+
+  const setFirebase = async (orden) => {
+  
+    try {
+      const col = collection(db, "ordenes"); //genero nueva col en fire
+      const generarOrden = await addDoc(col, orden) //addDoc agrega doc a firebase
+      setIdCompra(generarOrden.id);
+      
+      console.log("La orden se recibio bajo el ID:", generarOrden.id);
+      console.log("La fecha de la compra es", new Date());
+      
+      /* alert("Su orden se genero correctamente", generarOrden.id); */
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
   /* console.log(compra);
   console.log(total);
   console.log(typeof total); */
 
   const navigate = useNavigate();
 
-  const { items, clear } = useContext(CartContext);
-
-  let suma = items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0);
+  const { items, clear, suma } = useContext(CartContext);
 
   const [formulario, setFormulario] = useState({
     buyer: {
@@ -91,7 +101,19 @@ const Checkout = ({ total, compra }) => {
     buyer: { Nombre, Email, Telefono, Direccion },
   } = formulario;
 
-  const onSubmit = async(e) => {
+  
+  const OverlayOne = () => (
+    <ModalOverlay
+    bg="blackAlpha.300"
+    backdropFilter="blur(10px) hue-rotate(90deg)"
+    />
+    );
+    
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [overlay, setOverlay] = React.useState(<OverlayOne />);
+  
+  const onSubmit = async (e) => {
+     
     e.preventDefault();
     if (validarCampos([Nombre, Email, Telefono, Direccion])) {
       Swal.fire({
@@ -101,16 +123,8 @@ const Checkout = ({ total, compra }) => {
       });
       return;
     }
-    Swal.fire({
-      title: "Gracias por tu compra!",
-      text: `Pronto nos pondremos en contacto al mail, ${Email} 😉`,
-      icon: "success",
-    });
-    setFirebase({ formulario });
-    clear();
-
-   setTimeout(() => navigate("/"), 4000);
   };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -146,6 +160,8 @@ const Checkout = ({ total, compra }) => {
     }
     setError({});
   };
+
+  
 
   return (
     <>
@@ -183,13 +199,12 @@ const Checkout = ({ total, compra }) => {
                 error={error}
               />
             ))}
-
             <Box alignContent={"center"} alignSelf={"center"}>
               <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
                 Total de la compra: ${suma}
               </Heading>
 
-              <Button
+              {/*   <Button
                 type="submit"
                 as={Button}
                 variant={"solid"}
@@ -199,8 +214,54 @@ const Checkout = ({ total, compra }) => {
                 my={5}
               >
                 Confirmar Compra
+              </Button> */}
+
+              <Button
+                onClick={() => {
+                  setOverlay(<OverlayOne />);
+                  onOpen();
+                  setFirebase({ formulario });
+                  clear();
+                  setTimeout(() => navigate("/"), 5000);
+                }}
+                type="submit"
+                colorScheme={"green"}
+                variant={"solid"}
+              >
+                Confirmar Compra
               </Button>
             </Box>
+
+            <Modal
+              isCentered
+              isOpen={isOpen}
+              onClose={onClose}
+              closeOnOverlayClick={false}
+              motionPreset="slideInBottom"
+            >
+              {overlay}
+              <ModalContent textAlign={"center"}>
+                <ModalHeader>Su compra se registro con exito</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Text my={2}>Su numero de pedido es: {idCompra}</Text>
+                  <Text my={2}>
+                    Pronto nos pondremos en contacto al mail: {Email}
+                  </Text>
+
+                  <Text my={2}>¡Muchas gracias!</Text>
+                </ModalBody>
+                <ModalFooter alignSelf={"center"}>
+                  <Button
+                    variant={"outline"}
+                    colorScheme={"red"}
+                   >
+                    Cerrar
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+
             <Button
               leftIcon={<ArrowBackIcon />}
               variant={"outline"}
