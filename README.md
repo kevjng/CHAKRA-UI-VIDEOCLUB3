@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Videoclub3 💙 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Proyecto final de la camada 38280 realizado para [ ***#CODERHOUSE***](https://www.coderhouse.com "#CODERHOUSE")
 
-## Available Scripts
+> Curso React JS
+> ### Proyecto E-commerce
 
-In the project directory, you can run:
+> - Profe: Hovhannes Petrosyan
+> - Tutor: Flavio Gastón Dante Di Pietro
 
-### `npm start`
+> - Especial agradecimiento a **Gaston Morales**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ***Descipcion general:***
+VideoClub3 es una Single-page application en la que vas a poder comprar peliculas y series, tambien podras ver más detalles de cada Item. 
+Ademas podras agregarlos al carrito de compras (🤩Mi Lista), eliminarlos y finalmente realizar una orden de compra de las pelis/series elegidas.
+El carrtio tambien muestra el total de itemes seleccionados y el precio total de la orden.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Al usuario final se le informara su numero de compra y se registrara la orden generada en la base de datos **NoSQL** de Firebase.
 
-### `npm test`
+Luego VideoClub3 se contacatara al mail informado por el comprador para enviarle los detalles de su compra y habilitarle el acceso a las peliculas/series adquiridas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ***Simulacion de compra en VideoClub3***
+LiveView in Netlify [ *Netlify*](https://www.netlify.com/ "Netlify")
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ***En el proyecto se implementaron:***
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* 
+* 
+* 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Tecnologias Utilizadas
+Tecnologias usadas dentro del proyecto
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* [Technologie name](https://example.com): Version 12.3 
+* [Technologie name](https://example.com): Version 2.34
+* [Library name](https://example.com): Version 1234
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+by ***{ kvj }.***
