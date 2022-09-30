@@ -1,4 +1,4 @@
-# Videoclub3 💙 
+# Videoclub3 💎 
 
 Proyecto final de la camada 38280 realizado para [ ***#CODERHOUSE***](https://www.coderhouse.com "#CODERHOUSE")
 
@@ -23,15 +23,20 @@ Luego VideoClub3 se contacatara al mail informado por el comprador para enviarle
 LiveView in [ *Netlify*](https://www.netlify.com/ "Netlify") o en [ *Vercel*](https://vercel.com/)
 
 
-### ***En el proyecto se implementaron:***
 
-* 
-* 
-* 
+
+
+
+
+
+
+
+
 
 
 ### Tecnologias Utilizadas
-Tecnologias usadas para el proyecto
+
+>***Lenguajes:***
 
 ![html js css](https://user-images.githubusercontent.com/54695712/193309609-67463cb7-e307-40e2-ac93-e588ce7788aa.png)
 
