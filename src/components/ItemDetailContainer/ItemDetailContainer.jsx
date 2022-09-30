@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
         const col = await getDocs(data);
         const res = col.docs.map((doc) => (doc = { id: doc.id, ...doc.data() }));
         setItem(res.find((element) => element.id === id));
-        console.log(res.find((element) => element.id === id));
+        /* console.log(res.find((element) => element.id === id)); */
       } catch (error) {
         console.log(error);
       }

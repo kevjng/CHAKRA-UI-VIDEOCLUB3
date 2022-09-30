@@ -37,7 +37,7 @@ const [items, setItems] = useState({});
         setItems(res.filter((item)=>item.tipo === "serie"))
         /* console.log(res) */
       } catch (error) {
-        /* console.log(error) */
+        console.log(error)
       }
 
       }  

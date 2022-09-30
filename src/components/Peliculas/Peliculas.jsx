@@ -19,13 +19,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+/* import { useParams } from "react-router-dom"; */
 
 const Peliculas = () => {
   const [items, setItems] = useState({});
   
-  const {tipo} = useParams();
-  console.log(tipo);
+  /* const {tipo} = useParams(); */
+  /* console.log(tipo); */
 
  
   useEffect(() => {
@@ -38,7 +38,7 @@ const Peliculas = () => {
         );
         setItems(res.filter((item) => item.tipo === "pelicula"));
       } catch (error) {
-        /* console.log(error) */
+        console.log(error)
       }
     };
 

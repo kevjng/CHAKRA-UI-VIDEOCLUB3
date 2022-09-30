@@ -14,10 +14,10 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+/*   ModalFooter,
+ */  ModalBody,
+/*   ModalCloseButton,
+ */} from "@chakra-ui/react";
 
 import "./Checkout.css";
 
@@ -35,7 +35,7 @@ const Input = ({
   return (
     <Center>
       <Box textAlign="center" py={6} px={6}>
-        <FormControl className={className}>
+        <div className={className}>
           <input
             type={type}
             name={name}
@@ -45,14 +45,14 @@ const Input = ({
             className={inputClassName}
             placeholder={placeholder}
           />
-          {error.nombre && <h6 className="error">{error.nombre}</h6>}
-        </FormControl>
+          {error.nombre && (
+            <h6>{error.nombre}</h6>
+          )}
+        </div>
       </Box>
     </Center>
   );
 };
-
-
 
 
 const Checkout = ({ total, compra }) => {
@@ -65,8 +65,8 @@ const Checkout = ({ total, compra }) => {
       const generarOrden = await addDoc(col, orden) //addDoc agrega doc a firebase
       setIdCompra(generarOrden.id);
       
-      console.log("La orden se recibio bajo el ID:", generarOrden.id);
-      console.log("La fecha de la compra es", new Date());
+      /* console.log("La orden se recibio bajo el ID:", generarOrden.id);
+      console.log("La fecha de la compra es", new Date()); */
       
       /* alert("Su orden se genero correctamente", generarOrden.id); */
       
@@ -84,60 +84,55 @@ const Checkout = ({ total, compra }) => {
 
   const [formulario, setFormulario] = useState({
     buyer: {
-      Nombre: "",
-      Email: "",
-      Telefono: "",
-      Direccion: "",
+      nombre: "",
+      email: "",
+      telefono: "",
+      direccion: "",
     },
     compra: [{ items }],
     total: suma,
-    Fecha: new Date(),
+    fecha: new Date(),
   });
+  
   /* console.log(typeof (formulario.total));
   console.log(typeof(items.reduce((pv, cv) => pv + cv.price * cv.quantity, 0))); */
 
   const [error, setError] = useState({});
+
   const {
-    buyer: { Nombre, Email, Telefono, Direccion },
+    buyer: { nombre, email, telefono, direccion },
   } = formulario;
 
-  
-  const OverlayOne = () => (
-    <ModalOverlay
-    bg="blackAlpha.300"
-    backdropFilter="blur(10px) hue-rotate(90deg)"
-    />
-    );
-    
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [overlay, setOverlay] = React.useState(<OverlayOne />);
-  
-  const onSubmit = async (e) => {
-     
-    e.preventDefault();
-    if (validarCampos([Nombre, Email, Telefono, Direccion])) {
-      Swal.fire({
-        title: "Uhhh!",
-        text: "Campos incompletos, por favor llenalos",
-        icon: "error",
-      });
-      return;
-    }
-  };
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+      const onSubmit = async (e) => {
+        e.preventDefault();
+        if (validarCampos([nombre, email, telefono, direccion])) {
+          Swal.fire({
+            title: "Uhhh!",
+            text: "Campos incompletos, por favor llenalos",
+            icon: "error",
+          });
+          return;
+        }
+        setOverlay(<OverlayOne />);
+        onOpen();
+        clear();
+        setTimeout(() => navigate("/"), 9000);
 
-    setFormulario({
-      ...formulario,
-      buyer: {
-        ...formulario.buyer,
-        [name]: value,
-      },
-    });
-  };
+      };
 
-  /* const data = {
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setFormulario({
+          ...formulario,
+          buyer: {
+            ...formulario.buyer,
+            [name]: value,
+          },
+        });
+      };
+
+      /* const data = {
     buyer: {
       nombre: "",
       email: "",
@@ -152,16 +147,24 @@ const Checkout = ({ total, compra }) => {
     ],
   } */
 
-  const handleBlur = (e) => {
-    const { value, name } = e.target;
-    if (value === "") {
-      setError({ ...error, [name]: "Este campo es obligatorio" });
-      return;
-    }
-    setError({});
-  };
-
+      const handleBlur = (e) => {
+        const { value, name } = e.target;
+        if (value === "") {
+          setError({ ...error, [name]: "Este campo es obligatorio" });
+          return;
+        }
+        setError({});
+      };
   
+  const OverlayOne = () => (
+    <ModalOverlay
+    bg="blackAlpha.300"
+    backdropFilter="blur(10px) hue-rotate(90deg)"
+    />
+    );
+    
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [overlay, setOverlay] = React.useState(<OverlayOne />);
 
   return (
     <>
@@ -185,7 +188,7 @@ const Checkout = ({ total, compra }) => {
           borderColor={"cyan"}
         >
           <form onSubmit={onSubmit} className="container border">
-            <h2>Ingresa tus datos:</h2>
+            <h2>Por favor ingresa tus datos:</h2>
             {Object.keys(formulario.buyer).map((key, index) => (
               <Input
                 key={index}
@@ -203,30 +206,17 @@ const Checkout = ({ total, compra }) => {
               <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
                 Total de la compra: ${suma}
               </Heading>
-
-              {/*   <Button
-                type="submit"
-                as={Button}
-                variant={"solid"}
-                colorScheme={"green"}
-                size={"md"}
-                onClick={() => setFormulario(formulario)}
-                my={5}
-              >
-                Confirmar Compra
-              </Button> */}
+        
 
               <Button
-                onClick={() => {
-                  setOverlay(<OverlayOne />);
-                  onOpen();
-                  setFirebase({ formulario });
-                  clear();
-                  setTimeout(() => navigate("/"), 5000);
-                }}
                 type="submit"
-                colorScheme={"green"}
+                as={"button"}
                 variant={"solid"}
+                colorScheme={"green"}
+                my={5}
+                onClick={() => {
+                  setFirebase({ formulario });
+                 }}
               >
                 Confirmar Compra
               </Button>
@@ -241,24 +231,16 @@ const Checkout = ({ total, compra }) => {
             >
               {overlay}
               <ModalContent textAlign={"center"}>
-                <ModalHeader>Su compra se registro con exito</ModalHeader>
-                <ModalCloseButton />
+                <ModalHeader>Su compra se registro con exito 🤩</ModalHeader>
                 <ModalBody>
-                  <Text my={2}>Su numero de pedido es: {idCompra}</Text>
-                  <Text my={2}>
-                    Pronto nos pondremos en contacto al mail: {Email}
+                  <Text my={3}>Su numero de pedido es: {idCompra}</Text>
+                  <Text my={3}>
+                    Pronto nos pondremos en contacto al mail: {email}
                   </Text>
 
-                  <Text my={2}>¡Muchas gracias!</Text>
+                  <Text my={3}>¡Muchas gracias!</Text>
                 </ModalBody>
-                <ModalFooter alignSelf={"center"}>
-                  <Button
-                    variant={"outline"}
-                    colorScheme={"red"}
-                   >
-                    Cerrar
-                  </Button>
-                </ModalFooter>
+                
               </ModalContent>
             </Modal>
 

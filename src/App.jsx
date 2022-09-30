@@ -5,6 +5,7 @@ import { CartProvider } from "./context/CartContex";
 // ESTILOS
 import "./App.css";
 import Footer from "./components/Footer/Footer";
+import ScrollButton from "./components/ScrollButton/ScrollButton";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <div className="gradiente">
         <CartProvider>
           <Rutas />
+          
           <Footer />
         </CartProvider>
       </div>

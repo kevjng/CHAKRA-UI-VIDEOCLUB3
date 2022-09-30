@@ -13,6 +13,7 @@ import ItemDetailContainer from "../components/ItemDetailContainer/ItemDetailCon
 import Peliculas from "../components/Peliculas/Peliculas"
 import Series from "../components/Series/Series"
 import Checkout from "../components/Checkout/Checkout";
+import ScrollButton from "../components/ScrollButton/ScrollButton";
 
 const Rutas = () => {
   return (
@@ -26,8 +27,9 @@ const Rutas = () => {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/categorias/peliculas" element={<Peliculas />} />
         <Route path="/categorias/series" element={<Series />} />
-        <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
+      <ScrollButton />
     </BrowserRouter>
   );
 };

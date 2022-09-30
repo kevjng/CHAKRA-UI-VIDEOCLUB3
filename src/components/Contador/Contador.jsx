@@ -17,6 +17,22 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
     if (counter < stock) setCounter(counter + 1)
   };
 
+  const toast = useToast();
+
+  function handleClickAdd() {
+    
+    toast({
+      title: "Producto agregado.",
+      description: "Hemos agregado el producto a Mi Lista",
+      status: "success",
+      duration: 2000,
+      position: "top",
+      isClosable: true,
+    });
+    onAdd(counter);
+  }
+
+  
 
   return (
     <div
@@ -71,10 +87,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         mx={5}
         leftIcon={<StarIcon />}
         disabled={counter < 1}
-        onClick={() => {
-          onAdd(counter);
-         /*  useToast(); */
-        }}
+        onClick={handleClickAdd}
       >
         Agregar a Mi Lista
       </Button>

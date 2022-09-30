@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
 import Checkout from "../Checkout/Checkout";
+import { useToast } from "@chakra-ui/react";
 
 import {
   Box,
@@ -22,6 +23,22 @@ import {
 
 const Cart = () => {
   const { items, removeItem, clear, suma } = useContext(CartContext);
+
+  const toast = useToast();
+
+    function handleClickErase() {
+      toast({
+        title: "Producto eliminado.",
+        description: "Hemos eliminado el producto de Mi Lista",
+        status: "error",
+        duration: 2000,
+        position: "top",
+        isClosable: true,
+      });
+      
+
+    }
+  
 
   return (
     <Center color={"white"}>
@@ -84,12 +101,7 @@ const Cart = () => {
                       size={"sm"}
                       width={"100px"}
                       leftIcon={<DeleteIcon />}
-                      onClick={() =>
-                        removeItem(item.id) +
-                        console.log(
-                          `el id del producto eliminado es: ${item.id}`
-                        )
-                      }
+                      onClick={()=>removeItem(item.id)+ handleClickErase()}
                     >
                       Eliminar
                     </Button>
@@ -161,10 +173,7 @@ const Cart = () => {
           textAlign={"center"}
           w={"full"}
         >
-          <Checkout
-            compra={items}
-            total={suma}
-          />
+          <Checkout compra={items} total={suma} />
         </Box>
       </Center>
     </Center>
