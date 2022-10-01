@@ -21,7 +21,7 @@ import {
 
 //COMPONENTES
 import Contador from "../Contador/Contador";
-import { StarIcon } from "@chakra-ui/icons";
+import { ArrowLeftIcon, StarIcon } from "@chakra-ui/icons";
 
 export default function ItemDetail({ item }) {
  /*  const params = useParams() */
@@ -162,22 +162,6 @@ export default function ItemDetail({ item }) {
             <Box align={"center"} mt={"5px"}>
               {counter !== 0 ? (
                 <>
-                  <Link to="/">
-                    <div
-                      style={{
-                        backgroundColor: "#1D54B8",
-                        borderRadius: "1rem",
-                        display: "flex",
-                        height: "55px",
-                        justifyContent: "center",
-                        alignContent: "center",
-                        alignItems: "center",
-                        margin: "1rem 0rem",
-                      }}
-                    >
-                      ⬅️ Seguir comprando 😍
-                    </div>
-                  </Link>
                   <Link to="/Cart">
                     <div
                       style={{
@@ -190,21 +174,52 @@ export default function ItemDetail({ item }) {
                         alignItems: "center",
                       }}
                     >
-                      <StarIcon mr={1} />
-                      Ir a mi Lista
+                      <StarIcon />
+                      <Text ml={2}>Ir a mi Lista</Text>
                     </div>
+                  </Link>
+
+                  <Link to="/">
+                    <Box
+                      backgroundColor={"red.400"}
+                      style={{
+                        borderRadius: "1rem",
+                        display: "flex",
+                        height: "55px",
+                        justifyContent: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                        margin: "1rem 0rem",
+                      }}
+                    >
+                      <ArrowLeftIcon />
+                      <Text ml={2}>Volver</Text>
+                    </Box>
                   </Link>
                 </>
               ) : (
-                <Contador stock={item.stock} initial={1} onAdd={onAdd} />
+                <>
+                  <Contador stock={item.stock} initial={1} onAdd={onAdd} />
+                  <Link to="/">
+                    <Box
+                      backgroundColor={"red.400"}
+                      style={{
+                        borderRadius: "1rem",
+                        display: "flex",
+                        height: "55px",
+                        justifyContent: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                        margin: "1rem 0rem",
+                      }}
+                    >
+                      <ArrowLeftIcon />
+                      <Text ml={2}>Volver</Text>
+                    </Box>
+                  </Link>
+                </>
               )}
             </Box>
-
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent={"center"}
-            ></Stack>
           </Stack>
         </SimpleGrid>
       </Container>
