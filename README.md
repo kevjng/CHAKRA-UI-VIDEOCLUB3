@@ -20,7 +20,7 @@ Al usuario final se le informara su numero de compra y se registrara la orden ge
 Luego VideoClub3 se contacatara al mail informado por el comprador para enviarle los detalles de su compra y habilitarle el acceso a las peliculas/series adquiridas.
 
 ### ***Simulacion de compra en VideoClub3***
-LiveView in [ *Netlify*]( "Netlify") o en [ *Vercel*](https://chakra-ui-videoclub-3.vercel.app "Vercel")
+➡️ LiveView in [ *Vercel*](https://chakra-ui-videoclub-3.vercel.app "Vercel")
 
 
 
