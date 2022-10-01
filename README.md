@@ -22,11 +22,7 @@ Luego VideoClub3 se contacatara al mail informado por el comprador para enviarle
 ### ***Simulacion de compra en VideoClub3***
 LiveView in [ *Netlify*](https://www.netlify.com/ "Netlify") o en [ *Vercel*](https://vercel.com/)
 
-
-
-
-
-
+![tour_vc3](https://user-images.githubusercontent.com/54695712/193375551-3e3c0489-0642-40f7-b7a0-82562d634b3e.gif)
 
 
 
