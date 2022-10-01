@@ -6,7 +6,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { validarCampos } from "../../helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContex";
-import { Box, Button, Center, FormControl, Heading, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import {
@@ -169,9 +169,9 @@ const Checkout = ({ total, compra }) => {
   return (
     <>
       <Center
-        py={6}
-        px={6}
-        my={"2"}
+        py={24}
+        px={2}
+        
         display={"flex"}
         background={"blackAlpha.500"}
         borderRadius={"2xl"}
@@ -182,7 +182,7 @@ const Checkout = ({ total, compra }) => {
         <Box
           textAlign="center"
           py={6}
-          px={6}
+          px={20}
           border={"2px"}
           borderRadius={"2xl"}
           borderColor={"cyan"}

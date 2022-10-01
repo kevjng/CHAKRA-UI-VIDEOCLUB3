@@ -210,7 +210,8 @@ const ItemListContainer = () => {
           fontWeight="bold"
           bgGradient="linear(to-r, blue.400, orange.300, cyan.200)"
           bgClip="text"
-          my={5}
+          mb={8}
+          mx={4}
         >
           De todo un poco para vos...
         </Box>

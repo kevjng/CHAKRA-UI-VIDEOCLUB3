@@ -26,7 +26,7 @@ import { StarIcon } from "@chakra-ui/icons";
 export default function ItemDetail({ item }) {
  /*  const params = useParams() */
   
-  const { id, price, title, img, img1, tipo, año, genero, stock, /* desc */ } = item;
+  const { id, price, title, img1, tipo, año, genero, stock } = item;
   
   const { addItem } = useContext(CartContext); //paso el metodo añadir, lo traigo del context
   const [counter, setCounter] = useState(0);
@@ -54,7 +54,7 @@ export default function ItemDetail({ item }) {
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 18, md: 24 }}
+          py={24}
         >
           <Flex>
             <Image

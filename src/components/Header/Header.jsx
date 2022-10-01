@@ -13,12 +13,12 @@ function Header() {
     const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
 
     return (
-      <Stack>
+      <Stack align={"center"} pt={10} mx={10}>
         <Flex
           direction={isNotSmallerScreen ? "row" : "column"}
           spacing="200px"
           p={isNotSmallerScreen ? "32" : "0"}
-          alignSelf="flex-start"
+          alignSelf="center"
           color={"white"}
         >
           <Box mt={isNotSmallerScreen ? "0" : 16} align="flex-start">
@@ -51,17 +51,35 @@ function Header() {
               Conoce más de nosotros
             </Button>
           </Box>
-          <Image
-            alignSelf="center"
-            mt={isNotSmallerScreen ? "0" : "12"}
-            mb={isNotSmallerScreen ? "0" : "12"}
-            ml={isNotSmallerScreen ? "8" : "16"}
-            borderRadius="full"
-            backgroundColor="transparent"
-            boxShadow="lg"
-            boxSize="400px"
-            src="https://i.blogs.es/b84106/portada/1366_2000.jpg"
-          />
+          <Flex
+            flex={1}
+            justify={"center"}
+            align={"center"}
+            position={"relative"}
+            w={"full"}
+          >
+           
+            <Box
+              position={"relative"}
+              height={"300px"}
+              rounded={"2xl"}
+              boxShadow={"2xl"}
+              width={"full"}
+              overflow={"hidden"}
+            >
+              
+              <Image
+                alt={"Hero Image"}
+                fit={"cover"}
+                align={"center"}
+                w={"100%"}
+                h={"100%"}
+                src={
+                  "https://de10.com.mx/sites/default/files/styles/detalle_nota_1080x666_v22/public/2021/12/15/sagas_spider_man.jpg?itok=MBWO7KSC"
+                }
+              />
+            </Box>
+          </Flex>
         </Flex>
       </Stack>
     );

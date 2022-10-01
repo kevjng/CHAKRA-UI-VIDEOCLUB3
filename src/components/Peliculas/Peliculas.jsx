@@ -53,7 +53,7 @@ const Peliculas = () => {
         <Stack
           align={"center"}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 12, md: 20 }}
+          py={24}
           direction={{ base: "column", md: "row" }}
         >
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
@@ -168,12 +168,7 @@ const Peliculas = () => {
           <ItemList items={items} />
         ) : (
           <Center py={"5vh"} justify={"center"}>
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              color="blue.500"
-              size="xl"
-            />
+            <Spinner thickness="4px" speed="0.65s" color="blue.500" size="xl" />
           </Center>
         )}
       </Center>
