@@ -22,30 +22,31 @@ function Header() {
           color={"white"}
         >
           <Box mt={isNotSmallerScreen ? "0" : 16} align="flex-start">
-            <Text fontSize="5xl" fontWeight="semibold">
-              Bienvenido a
-            </Text>
             <Text
-              fontSize="7xl"
-              fontWeight="bold"
-              bgGradient="linear(to-r, cyan.400, blue.500, purple.600)"
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
               bgClip="text"
+              fontSize="7xl"
+              fontWeight="extrabold"
             >
-              VideoClub 3
+              Bienvenido a VideoClub 3
             </Text>
+
             <Divider />
-            <Text color={isDark ? "gray.200" : "gray.500"}>
+            <Text color={isDark ? "gray.200" : "gray.200"} fontSize="xl">
               Evolucionamos, volvimos.
             </Text>
 
-            <Text fontSize="xl" fontWeight={700} lineHeight={10}>
+            <Text my={8} fontSize="4xl" fontWeight={700} lineHeight={10}>
               Una nueva forma de mirar contenido sin restricciones, donde estes,
               como estes y sin rebobinar tu peli o serie favorita 😍
             </Text>
             <Divider />
             <Button
               mt={8}
-              colorScheme="blue" /* onClick={() => window.open("#")} */
+              bgGradient="linear(to-l, pink.500, red.500)"
+              _hover={{
+                bgGradient: "linear(to-l, red.500, yellow.500)",
+              }}
             >
               Conoce más de nosotros
             </Button>

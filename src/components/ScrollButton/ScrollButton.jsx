@@ -1,5 +1,5 @@
 import { TriangleUpIcon } from "@chakra-ui/icons";
-import { Center } from "@chakra-ui/react";
+import { Center, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 
@@ -27,8 +27,8 @@ const ScrollButton = () => {
   return (
     <Center>
       <button className="Button">
-        
         <TriangleUpIcon
+          color={useColorModeValue("gray.300", "gray.900")}
           className="Button"
           w={"50px"}
           h={10}

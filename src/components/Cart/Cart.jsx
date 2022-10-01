@@ -41,13 +41,13 @@ const Cart = () => {
   
 
   return (
-    <Center color={"white"}>
+    <Center color={"white"} pt={"16"}>
       <Box textAlign="center" py={10} px={6}>
         <CheckCircleIcon boxSize={"50px"} color={"green.500"} />
         <Heading as="h2" size="xl" mt={6} mb={2} color={"white"}>
           Esta es tu seleccion de Mi Lista
         </Heading>
-        <Text color={"gray.500"}>
+        <Text color={"gray.300"}>
           Todas las peliculas y series que hayas agregado a Mi Lista apareceran
           en esta seccion 👌
         </Text>

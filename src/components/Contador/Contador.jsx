@@ -1,5 +1,5 @@
 /* LIBRERIAS DEPENDENCIAS */
-import { Button, IconButton, useColorModeValue } from "@chakra-ui/react";
+import { Box, Button, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { StarIcon } from "@chakra-ui/icons";
@@ -35,8 +35,8 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
   
 
   return (
-    <div
-      className="boton-gradiente"
+    <Box
+      bg={useColorModeValue("gray.300", "gray.900")}
       style={{
         borderRadius: "1rem",
         display: "flex",
@@ -45,7 +45,9 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
         alignItems: "center",
       }}
     >
-      <span>Reproducciones:</span>
+      <Text color={useColorModeValue("gray.900", "gray.300")}>
+        Reproducciones:
+      </Text>
       <span disabled={counter < initial}>
         <IconButton
           onClick={() => {
@@ -91,7 +93,7 @@ const Contador = ({ stock, initial = 0, onAdd }) => {
       >
         Agregar a Mi Lista
       </Button>
-    </div>
+    </Box>
   );
 };
 

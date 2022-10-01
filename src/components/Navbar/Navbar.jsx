@@ -63,7 +63,13 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("whiteAlpha.500", "gray.900")} px={15}>
+      <Box
+        bg={useColorModeValue("gray.400", "gray.900")}
+        px={15}
+        position="fixed"
+        w={"100%"}
+        zIndex={2}
+        >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -84,11 +90,7 @@ export default function Navbar() {
               display={{ base: "none", md: "flex" }}
             >
               {config.routes.map((ruta, index) => (
-                <NavLink
-                  className="btn"
-                  key={index}
-                  to={ruta.to}
-                  >
+                <NavLink className="btn" key={index} to={ruta.to}>
                   {ruta.label}
                 </NavLink>
               ))}
@@ -102,12 +104,8 @@ export default function Navbar() {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            <button>
-              {/* <Search2Icon mr={6} w={4} /> */}
-            </button>
-            <button>
-              {/* <BellIcon mr={6} w={5} h={5} /> */}
-            </button>
+            <button>{/* <Search2Icon mr={6} w={4} /> */}</button>
+            <button>{/* <BellIcon mr={6} w={5} h={5} /> */}</button>
             <Cartwidget />
             <Menu>
               <MenuButton
