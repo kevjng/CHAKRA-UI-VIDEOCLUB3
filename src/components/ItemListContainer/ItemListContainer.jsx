@@ -204,7 +204,7 @@ const ItemListContainer = () => {
   return (
     <>
       <Header />
-      <Center justifyContent="space-around">
+      <Center>
         <Box
           fontSize="6xl"
           fontWeight="bold"
@@ -216,7 +216,7 @@ const ItemListContainer = () => {
           De todo un poco para vos...
         </Box>
       </Center>
-      <Center mx={"40"} maxW="1500px" minW="250px">
+      <Center maxW="1500px" minW="250px">
         {items.length ? (
           <ItemList items={items} />
         ) : (

@@ -1,7 +1,8 @@
 import { TriangleUpIcon } from "@chakra-ui/icons";
-import { Center, useColorModeValue } from "@chakra-ui/react";
+import { Center, color, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
+ 
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
@@ -30,8 +31,8 @@ const ScrollButton = () => {
         <TriangleUpIcon
           color={useColorModeValue("gray.300", "gray.900")}
           className="Button"
-          w={"50px"}
-          h={10}
+          w={14}
+          h={14}
           my={1.5}
           onClick={scrollToTop}
           style={{ display: visible ? "inline" : "none" }}

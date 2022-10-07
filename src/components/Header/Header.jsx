@@ -12,7 +12,7 @@ function Header() {
     const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
 
     return (
-      <Stack align={"center"} pt={5} mx={10}>
+      <Stack align={"center"} pt={5} mx={0}>
         <Flex
           direction={isNotSmallerScreen ? "row" : "column"}
           spacing="200px"
@@ -24,8 +24,9 @@ function Header() {
             <Text
               bgGradient="linear(to-l, gold, pink)"
               bgClip="text"
-              fontSize="7xl"
+              fontSize={"60"}
               fontWeight="extrabold"
+              align={"start"}
               
             >
               Bienvenido a VideoClub 3
