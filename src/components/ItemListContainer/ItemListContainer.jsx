@@ -212,7 +212,7 @@ const ItemListContainer = () => {
          fontWeight="extrabold"
          align={"start"}
          mb={"20"}
-         mx={"4"}
+         mx={"10"}
        >
          De todo un poco para vos ...
        </Text>

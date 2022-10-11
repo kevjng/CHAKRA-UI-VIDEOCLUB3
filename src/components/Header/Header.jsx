@@ -35,17 +35,28 @@ function Header() {
             </Text>
 
             <Divider />
-            <Text color={isDark ? "gray.200" : "gray.200"} fontSize="xl">
+            <Text
+              mx={"4"}
+              color={isDark ? "gray.200" : "gray.200"}
+              fontSize="xl"
+            >
               Evolucionamos, volvimos.
             </Text>
 
-            <Text my={8} fontSize="4xl" fontWeight={700} lineHeight={10}>
+            <Text
+              mx={"4"}
+              my={"8"}
+              fontSize="4xl"
+              fontWeight={700}
+              lineHeight={10}
+            >
               Una nueva forma de mirar contenido sin restricciones, donde estes,
               como estes y sin rebobinar tu peli o serie favorita 😍
             </Text>
             <Divider />
             <Button
               mt={8}
+              mx={"4"}
               bgGradient="linear(to-l, pink.500, red.500)"
               _hover={{
                 bgGradient: "linear(to-l, red.500, yellow.500)",

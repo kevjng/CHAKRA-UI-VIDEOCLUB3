@@ -171,7 +171,6 @@ const Checkout = ({ total, compra }) => {
       <Center
         py={24}
         px={2}
-        
         display={"flex"}
         background={"blackAlpha.500"}
         borderRadius={"2xl"}
@@ -206,7 +205,6 @@ const Checkout = ({ total, compra }) => {
               <Heading as="h1" size="lg" mt={10} mb={4} color={"beige"}>
                 Total de la compra: ${suma}
               </Heading>
-        
 
               <Button
                 type="submit"
@@ -216,7 +214,7 @@ const Checkout = ({ total, compra }) => {
                 my={5}
                 onClick={() => {
                   setFirebase({ formulario });
-                 }}
+                }}
               >
                 Confirmar Compra
               </Button>
@@ -237,10 +235,12 @@ const Checkout = ({ total, compra }) => {
                   <Text my={3}>
                     Pronto nos pondremos en contacto al mail: {email}
                   </Text>
+                  <Text my={3}>
+                    Sera redirigido a inicio en unos segundos!
+                  </Text>
 
                   <Text my={3}>¡Muchas gracias!</Text>
                 </ModalBody>
-                
               </ModalContent>
             </Modal>
 
