@@ -28,24 +28,23 @@ const Peliculas = () => {
   /* console.log(tipo); */
 
  
-  useEffect(() => {
-    const getColData = async () => {
-      try {
-        const data = collection(db, "items");
-        const col = await getDocs(data);
-        const res = col.docs.map(
-          (doc) => (doc = { id: doc.id, ...doc.data() })
-        );
-        setItems(res.filter((item) => item.tipo === "pelicula"));
-      } catch (error) {
-        console.log(error)
-      }
-    };
+ useEffect(() => {
+   const getColData = async () => {
+     try {
+       const data = collection(db, "items");
+       const col = await getDocs(data);
+       const res = col.docs.map((doc) => (doc = { id: doc.id, ...doc.data() }));
+       setItems(res.filter((item) => item.tipo === "pelicula"));
+       /* console.log(res) */
+     } catch (error) {
+       console.log(error);
+     }
+   };
 
-    getColData();
+   getColData();
 
-    return () => {};
-  }, []);
+   return () => {};
+ }, []);
 
   return (
     <>
@@ -168,7 +167,13 @@ const Peliculas = () => {
           <ItemList items={items} />
         ) : (
           <Center py={"5vh"} justify={"center"}>
-            <Spinner thickness="4px" speed="0.65s" color="blue.500" size="xl" />
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="xl"
+            />
           </Center>
         )}
       </Center>

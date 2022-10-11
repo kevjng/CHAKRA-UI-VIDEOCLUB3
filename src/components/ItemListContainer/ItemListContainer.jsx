@@ -1,4 +1,4 @@
-import { Box, Center, Spinner } from "@chakra-ui/react";
+import { Center, Spinner, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import Header from "../Header/Header";
@@ -202,37 +202,38 @@ const ItemListContainer = () => {
   }, [id]); */
 
  return (
-    <>
-      <Header/>
-      <Center>
-        <Box
-          fontSize="6xl"
-          fontWeight="bold"
-          bgGradient="linear(to-r, blue.400, orange.300, cyan.200)"
-          bgClip="text"
-          mb={8}
-          mx={4}
-        >
-          De todo un poco para vos...
-        </Box>
-      </Center>
-      <Center mx={"20"} maxW="" minW="">
-        {items.length ? (
-          <ItemList items={items} />
-        ) : (
-          <Center py={"5vh"}>
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
-          </Center>
-        )}
-      </Center>
-    </>
-  );
+   <>
+     <Header />
+     <Center>
+        <Text
+         fontSize="6xl"
+         bgGradient="linear(to-r, blue.400, orange.300, cyan.200)"
+         bgClip="text"
+         fontWeight="extrabold"
+         align={"start"}
+         mb={"20"}
+         mx={"4"}
+       >
+         De todo un poco para vos ...
+       </Text>
+     </Center>
+     <Center mx={"20"} maxW="" minW="">
+       {items.length ? (
+         <ItemList items={items} />
+       ) : (
+         <Center py={"5vh"}>
+           <Spinner
+             thickness="4px"
+             speed="0.65s"
+             emptyColor="gray.200"
+             color="cyan.500"
+             size="xl"
+           />
+         </Center>
+       )}
+     </Center>
+   </>
+ );
 };
 
 export default ItemListContainer;

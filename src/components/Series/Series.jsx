@@ -10,7 +10,6 @@ import {
   Icon,
   IconButton,
   createIcon,
-  IconProps,
   useColorModeValue,
   Center,
   Spinner,
