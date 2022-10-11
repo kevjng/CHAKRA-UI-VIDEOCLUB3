@@ -16,8 +16,8 @@ function Header() {
         <Flex
           direction={isNotSmallerScreen ? "row" : "column"}
           spacing="200px"
-          pt={"24"}
-          px={"10"}
+          my={"24"}
+          mx={"24"}
           /* p={isNotSmallerScreen ? "24" : "24"} */
           alignSelf="center"
           color={"white"}
