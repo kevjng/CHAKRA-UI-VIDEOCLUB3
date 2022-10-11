@@ -16,7 +16,9 @@ function Header() {
         <Flex
           direction={isNotSmallerScreen ? "row" : "column"}
           spacing="200px"
-          p={isNotSmallerScreen ? "24" : "24"}
+          pt={"24"}
+          px={"10"}
+          /* p={isNotSmallerScreen ? "24" : "24"} */
           alignSelf="center"
           color={"white"}
         >
@@ -27,7 +29,6 @@ function Header() {
               fontSize={"60"}
               fontWeight="extrabold"
               align={"start"}
-              
             >
               Bienvenido a VideoClub 3
             </Text>

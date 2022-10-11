@@ -203,7 +203,7 @@ const ItemListContainer = () => {
 
  return (
     <>
-      <Header />
+      <Header/>
       <Center>
         <Box
           fontSize="6xl"
