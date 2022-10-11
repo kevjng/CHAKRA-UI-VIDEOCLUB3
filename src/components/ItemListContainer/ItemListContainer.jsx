@@ -202,7 +202,7 @@ const ItemListContainer = () => {
   }, [id]); */
 
  return (
-    <>
+    <Center>
       <Header />
       <Center>
         <Box
@@ -231,7 +231,7 @@ const ItemListContainer = () => {
           </Center>
         )}
       </Center>
-    </>
+    </Center>
   );
 };
 
