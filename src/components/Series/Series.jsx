@@ -159,7 +159,7 @@ const [items, setItems] = useState({});
         </Stack>
       </Container>
 
-      <Center mx={"40"} maxW="1500px" minW="250px">
+      <Center mx={"20"} maxW="" minW="">
         {items.length ? (
           <ItemList items={items} />
         ) : (

@@ -216,7 +216,7 @@ const ItemListContainer = () => {
           De todo un poco para vos...
         </Box>
       </Center>
-      <Center maxW="1500px" minW="250px">
+      <Center mx={"20"} maxW="" minW="">
         {items.length ? (
           <ItemList items={items} />
         ) : (
