@@ -202,9 +202,8 @@ const ItemListContainer = () => {
   }, [id]); */
 
   return (
-    <>
-      <Header />
-      <Center>
+       <Center>
+       <Header />
         <Box
           fontSize="6xl"
           fontWeight="bold"
@@ -231,7 +230,6 @@ const ItemListContainer = () => {
           </Center>
         )}
       </Center>
-    </>
   );
 };
 
