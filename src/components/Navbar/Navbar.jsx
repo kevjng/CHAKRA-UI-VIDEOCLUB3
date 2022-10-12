@@ -69,7 +69,7 @@ export default function Navbar() {
         position="fixed"
         w={"100%"}
         zIndex={2}
-        >
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -182,7 +182,12 @@ export default function Navbar() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {config.routes.map((ruta, index) => (
-                <NavLink className="btn" key={index} to={ruta.to}>
+                <NavLink
+                  className="btn"
+                  key={index}
+                  to={ruta.to}
+                  closeOnSelect={true}
+                >
                   {ruta.label}
                 </NavLink>
               ))}
